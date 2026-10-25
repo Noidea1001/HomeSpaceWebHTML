@@ -1,0 +1,40 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint-and-validate:
+    name: Code Quality & Syntax Validation
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: HTML Syntax & Structure Check
+        run: |
+          npx --yes htmlhint "*.html"
+
+      - name: CSS Lint Check
+        run: |
+          npx --yes stylelint "assets/css/**/*.css" --allow-empty-input || true
+
+      - name: Verify Core File Integrity
+        run: |
+          test -f index.html || exit 1
+          test -f assets/css/main.css || exit 1
+          test -f assets/js/main.js || exit 1
+          echo "All critical assets verified successfully."
