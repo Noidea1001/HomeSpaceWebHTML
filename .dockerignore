@@ -1,0 +1,14 @@
+.git/
+.github/
+.idea/
+.vscode/
+*.log
+.DS_Store
+Thumbs.db
+Dockerfile
+docker-compose.yml
+.dockerignore
+nginx/
+README.md
+Readme.txt
+scratch/
