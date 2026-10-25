@@ -14,52 +14,52 @@
 --------------------------------------------------------------*/
 /* Fonts */
 :root {
-  --default-font: "Roboto",  system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --heading-font: "Raleway",  sans-serif;
-  --nav-font: "Montserrat",  sans-serif;
+  --default-font: "Plus Jakarta Sans", "Roboto", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --heading-font: "Plus Jakarta Sans", "Montserrat", sans-serif;
+  --nav-font: "Plus Jakarta Sans", "Montserrat", sans-serif;
 }
 
 /* Global Colors - The following color variables are used throughout the website. Updating them here will change the color scheme of the entire website */
 :root { 
   --background-color: #ffffff; /* Background color for the entire website, including individual sections */
-  --default-color: #263a31; /* Default color used for the majority of the text content across the entire website */
-  --heading-color: #022b3a; /* Color for headings, subheadings and title throughout the website */
-  --accent-color: #1f7a8c; /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
-  --surface-color: #ffffff; /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
-  --contrast-color: #ffffff; /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
+  --default-color: #334155; /* Modern Slate-700: crisp, neutral, clear readability */
+  --heading-color: #0f172a; /* Slate-900: commanding, sharp, executive */
+  --accent-color: #0284c7; /* Vibrant luxury ocean azure */
+  --surface-color: #ffffff; /* Crisp white surface */
+  --contrast-color: #ffffff; /* Contrast text */
 }
 
 /* Nav Menu Colors - The following color variables are used specifically for the navigation menu. They are separate from the global colors to allow for more customization options */
 :root {
-  --nav-color: rgba(255, 255, 255, 0.7);  /* The default color of the main navmenu links */
-  --nav-hover-color: #ffffff; /* Applied to main navmenu links when they are hovered over or active */
+  --nav-color: #475569;  /* Crisp slate nav links */
+  --nav-hover-color: #0284c7; /* Vibrant accent color on hover */
   --nav-mobile-background-color: #ffffff; /* Used as the background color for mobile navigation menu */
   --nav-dropdown-background-color: #ffffff; /* Used as the background color for dropdown items that appear when hovering over primary navigation items */
-  --nav-dropdown-color: #263a31; /* Used for navigation links of the dropdown items in the navigation menu. */
-  --nav-dropdown-hover-color: #1f7a8c; /* Similar to --nav-hover-color, this color is applied to dropdown navigation links when they are hovered over. */
+  --nav-dropdown-color: #334155; /* Used for navigation links of the dropdown items in the navigation menu. */
+  --nav-dropdown-hover-color: #0284c7; /* Similar to --nav-hover-color, this color is applied to dropdown navigation links when they are hovered over. */
 }
 
 /* Color Presets - These classes override global colors when applied to any section or element, providing reuse of the sam color scheme. */
 
 .light-background {
-  --background-color: #edf6f2;
+  --background-color: #f8fafc;
   --surface-color: #ffffff;
 }
 
 .dark-background {
-  --background-color: #081b12;
-  --default-color: #ffffff;
+  --background-color: #0b1120;
+  --default-color: #94a3b8;
   --heading-color: #ffffff;
-  --surface-color: #1f3028;
+  --surface-color: #1e293b;
   --contrast-color: #ffffff;
 }
 
 .accent-background {
-  --background-color: #1f7a8c;
+  --background-color: #0284c7;
   --default-color: #ffffff;
   --heading-color: #ffffff;
   --accent-color: #ffffff;
-  --surface-color: #2a8f5f;
+  --surface-color: #0369a1;
   --contrast-color: #ffffff;
 }
 
@@ -154,13 +154,16 @@ h6 {
 # Global Header
 --------------------------------------------------------------*/
 .header {
-  --background-color: #1f7a8c;
-  --default-color: #ffffff;
-  --heading-color: #ffffff;
+  --background-color: rgba(255, 255, 255, 0.95);
+  --default-color: #334155;
+  --heading-color: #0f172a;
   color: var(--default-color);
   background-color: var(--background-color);
-  padding: 15px 0;
-  transition: all 0.5s;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(226, 232, 240, 0.85);
+  padding: 16px 0;
+  transition: all 0.3s ease;
   z-index: 997;
 }
 
@@ -169,25 +172,36 @@ h6 {
 }
 
 .header .logo img {
-  max-height: 32px;
+  max-height: 36px;
   margin-right: 8px;
 }
 
 .header .logo svg {
   height: 32px;
-  margin-right: 6px;
-  color: color-mix(in srgb, var(--default-color), transparent 50%);
+  margin-right: 8px;
+  color: var(--accent-color);
+  transition: transform 0.3s ease;
+}
+
+.header .logo:hover svg {
+  transform: translateY(-2px);
 }
 
 .header .logo h1 {
-  font-size: 30px;
+  font-size: 26px;
   margin: 0;
-  font-weight: 700;
+  font-weight: 800;
+  letter-spacing: -0.5px;
   color: var(--heading-color);
 }
 
+.header .logo h1 span {
+  color: var(--accent-color);
+}
+
 .scrolled .header {
-  box-shadow: 0px 0 18px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.08);
+  background-color: rgba(255, 255, 255, 0.98);
 }
 
 /*--------------------------------------------------------------
@@ -245,7 +259,7 @@ h6 {
 
   .navmenu .dropdown ul {
     margin: 0;
-    padding: 10px 0;
+    padding: 8px 0;
     background: var(--nav-dropdown-background-color);
     display: block;
     position: absolute;
@@ -253,10 +267,11 @@ h6 {
     left: 14px;
     top: 130%;
     opacity: 0;
-    transition: 0.3s;
-    border-radius: 4px;
+    transition: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    border-radius: 12px;
+    border: 1px solid rgba(226, 232, 240, 0.8);
     z-index: 99;
-    box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 15px 35px -5px rgba(15, 23, 42, 0.12);
   }
 
   .navmenu .dropdown ul li {
@@ -431,16 +446,23 @@ h6 {
 # Global Footer
 --------------------------------------------------------------*/
 .footer {
+  --background-color: #0b1120;
+  --default-color: #94a3b8;
+  --heading-color: #ffffff;
+  --accent-color: #38bdf8;
+  --surface-color: #1e293b;
+  --contrast-color: #ffffff;
   color: var(--default-color);
-  background-color: var(--background-color);
-  font-size: 14px;
-  padding-bottom: 50px;
+  background-color: #0b1120 !important;
+  font-size: 14.5px;
+  padding-bottom: 40px;
   position: relative;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .footer .footer-top {
-  padding-top: 50px;
-  border-top: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+  padding-top: 60px;
+  border-top: none;
 }
 
 .footer .footer-about .logo {
@@ -454,42 +476,66 @@ h6 {
 }
 
 .footer .footer-about .logo span {
-  color: var(--heading-color);
-  font-size: 30px;
-  font-weight: 700;
-  letter-spacing: 1px;
+  color: #ffffff;
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
   font-family: var(--heading-font);
 }
 
+.footer .footer-about .logo span span {
+  color: #38bdf8;
+}
+
 .footer .footer-about p {
-  font-size: 14px;
-  font-family: var(--heading-font);
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: #94a3b8;
+  font-family: var(--default-font);
 }
 
 .footer .social-links a {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
+  width: 42px;
+  height: 42px;
   border-radius: 50%;
-  border: 1px solid color-mix(in srgb, var(--default-color), transparent 50%);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   font-size: 16px;
-  color: color-mix(in srgb, var(--default-color), transparent 50%);
+  color: #cbd5e1;
   margin-right: 10px;
-  transition: 0.3s;
+  transition: all 0.3s ease;
 }
 
 .footer .social-links a:hover {
-  color: var(--accent-color);
-  border-color: var(--accent-color);
+  background: #0284c7;
+  border-color: #0284c7;
+  color: #ffffff;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.4);
 }
 
 .footer h4 {
   font-size: 16px;
-  font-weight: bold;
+  font-weight: 700;
+  color: #ffffff;
   position: relative;
   padding-bottom: 12px;
+  margin-bottom: 18px;
+  letter-spacing: -0.2px;
+}
+
+.footer h4::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 28px;
+  height: 2px;
+  background: #0284c7;
+  border-radius: 2px;
 }
 
 .footer .footer-links {
@@ -503,13 +549,14 @@ h6 {
 }
 
 .footer .footer-links ul i {
-  padding-right: 2px;
+  padding-right: 4px;
   font-size: 12px;
   line-height: 0;
+  color: #38bdf8;
 }
 
 .footer .footer-links ul li {
-  padding: 10px 0;
+  padding: 8px 0;
   display: flex;
   align-items: center;
 }
@@ -519,32 +566,58 @@ h6 {
 }
 
 .footer .footer-links ul a {
-  color: color-mix(in srgb, var(--default-color), transparent 20%);
+  color: #94a3b8;
   display: inline-block;
-  line-height: 1;
+  line-height: 1.4;
+  transition: all 0.2s ease;
 }
 
 .footer .footer-links ul a:hover {
-  color: var(--accent-color);
+  color: #38bdf8;
+  transform: translateX(4px);
 }
 
 .footer .footer-contact p {
-  margin-bottom: 5px;
+  margin-bottom: 6px;
+  color: #94a3b8;
+}
+
+.footer .footer-contact h4::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 28px;
+  height: 2px;
+  background: #0284c7;
+  border-radius: 2px;
 }
 
 .footer .copyright {
   padding-top: 25px;
   padding-bottom: 25px;
-  background-color: color-mix(in srgb, var(--default-color), transparent 95%);
+  margin-top: 30px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  background-color: transparent;
+  color: #64748b;
 }
 
 .footer .copyright p {
   margin-bottom: 0;
 }
 
+.footer .copyright strong {
+  color: #ffffff;
+}
+
 .footer .credits {
   margin-top: 6px;
   font-size: 13px;
+  color: #64748b;
+}
+
+.footer .credits a {
+  color: #38bdf8;
 }
 
 /*--------------------------------------------------------------
@@ -9074,4 +9147,151 @@ section,
 --------------------------------------------------------------*/
 .starter-section {
   /* Add your styles here */
+}
+
+/*--------------------------------------------------------------
+# Modern UI & Quality Design Enhancements
+--------------------------------------------------------------*/
+
+/* Header CTA Button */
+.btn-nav-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+  color: #ffffff !important;
+  padding: 10px 22px !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  border-radius: 50px !important;
+  border: none;
+  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.3);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  margin-left: 15px;
+  text-decoration: none;
+}
+
+.btn-nav-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(2, 132, 199, 0.45);
+  color: #ffffff !important;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Enhanced Form Inputs & Search */
+.property-search-form .search-field input,
+.property-search-form .search-field select,
+.search-form input,
+.form-control {
+  border-radius: 12px;
+  border: 1.5px solid #e2e8f0;
+  transition: all 0.2s ease;
+  font-size: 14.5px;
+  color: #1e293b;
+}
+
+.property-search-form .search-field input:focus,
+.property-search-form .search-field select:focus,
+.search-form input:focus,
+.form-control:focus {
+  border-color: #0284c7 !important;
+  box-shadow: 0 0 0 4px rgba(2, 132, 199, 0.15) !important;
+  outline: none;
+}
+
+/* Card Hover Elevation & Image Zoom */
+.property-item,
+.featured-property-main,
+.service-item,
+.agent-item,
+.post-item {
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.property-item:hover,
+.featured-property-main:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 35px -8px rgba(15, 23, 42, 0.12) !important;
+  border-color: rgba(2, 132, 199, 0.3) !important;
+}
+
+.property-item .property-image,
+.featured-property-main .property-hero,
+.post-item .post-img {
+  overflow: hidden;
+  border-radius: 14px 14px 0 0;
+}
+
+.property-item .property-image img,
+.featured-property-main .property-hero img,
+.post-item .post-img img {
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.property-item:hover .property-image img,
+.featured-property-main:hover .property-hero img,
+.post-item:hover .post-img img {
+  transform: scale(1.05);
+}
+
+/* Modern Primary Buttons */
+.btn-primary,
+.search-btn,
+.search-box .search-btn {
+  background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%) !important;
+  border: none !important;
+  border-radius: 10px;
+  font-weight: 600;
+  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.3);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-primary:hover,
+.search-btn:hover,
+.search-box .search-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(2, 132, 199, 0.45) !important;
+  background: linear-gradient(135deg, #0369a1 0%, #075985 100%) !important;
+}
+
+/* Service Items Modern Touch */
+.service-item {
+  border-radius: 16px;
+  border: 1px solid #e2e8f0;
+  background: #ffffff;
+  padding: 32px 28px;
+}
+
+.service-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 32px -8px rgba(15, 23, 42, 0.08);
+  border-color: rgba(2, 132, 199, 0.25);
+}
+
+/* Status Badges */
+.property-badge,
+.badge-status {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  font-weight: 600;
+  letter-spacing: 0.3px;
 }
