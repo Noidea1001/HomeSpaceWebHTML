@@ -19,47 +19,46 @@
   --nav-font: "Plus Jakarta Sans", "Montserrat", sans-serif;
 }
 
-/* Global Colors - The following color variables are used throughout the website. Updating them here will change the color scheme of the entire website */
+/* Global Colors - Modern High-Contrast Black & White with Signature Royal Blue */
 :root { 
-  --background-color: #ffffff; /* Background color for the entire website, including individual sections */
-  --default-color: #334155; /* Modern Slate-700: crisp, neutral, clear readability */
-  --heading-color: #0f172a; /* Slate-900: commanding, sharp, executive */
-  --accent-color: #0284c7; /* Vibrant luxury ocean azure */
-  --surface-color: #ffffff; /* Crisp white surface */
-  --contrast-color: #ffffff; /* Contrast text */
+  --background-color: #ffffff; /* Crisp Pure White */
+  --default-color: #18181b; /* Rich Charcoal/Black: maximum clarity and contrast */
+  --heading-color: #000000; /* True Jet Black */
+  --accent-color: #2563eb; /* Signature Electric Royal Blue */
+  --surface-color: #ffffff; /* Crisp Pure White Surface */
+  --contrast-color: #ffffff; /* Pure White Contrast Text */
 }
 
-/* Nav Menu Colors - The following color variables are used specifically for the navigation menu. They are separate from the global colors to allow for more customization options */
+/* Nav Menu Colors - Black & White with Blue */
 :root {
-  --nav-color: #475569;  /* Crisp slate nav links */
-  --nav-hover-color: #0284c7; /* Vibrant accent color on hover */
-  --nav-mobile-background-color: #ffffff; /* Used as the background color for mobile navigation menu */
-  --nav-dropdown-background-color: #ffffff; /* Used as the background color for dropdown items that appear when hovering over primary navigation items */
-  --nav-dropdown-color: #334155; /* Used for navigation links of the dropdown items in the navigation menu. */
-  --nav-dropdown-hover-color: #0284c7; /* Similar to --nav-hover-color, this color is applied to dropdown navigation links when they are hovered over. */
+  --nav-color: #09090b;  /* Pure Jet Black nav links */
+  --nav-hover-color: #2563eb; /* Vibrant Royal Blue on hover */
+  --nav-mobile-background-color: #ffffff; /* Mobile navigation background */
+  --nav-dropdown-background-color: #ffffff; /* Dropdown items background */
+  --nav-dropdown-color: #09090b; /* Dropdown links color */
+  --nav-dropdown-hover-color: #2563eb; /* Dropdown hover color */
 }
 
-/* Color Presets - These classes override global colors when applied to any section or element, providing reuse of the sam color scheme. */
-
+/* Color Presets */
 .light-background {
-  --background-color: #f8fafc;
+  --background-color: #fafafa; /* Minimalist clean off-white */
   --surface-color: #ffffff;
 }
 
 .dark-background {
-  --background-color: #0b1120;
-  --default-color: #94a3b8;
-  --heading-color: #ffffff;
-  --surface-color: #1e293b;
+  --background-color: #000000; /* Pure Jet Black */
+  --default-color: #d4d4d8; /* Crisp light gray body */
+  --heading-color: #ffffff; /* Pure White headings */
+  --surface-color: #09090b; /* Deep black surface */
   --contrast-color: #ffffff;
 }
 
 .accent-background {
-  --background-color: #0284c7;
+  --background-color: #2563eb; /* Royal Blue background */
   --default-color: #ffffff;
   --heading-color: #ffffff;
   --accent-color: #ffffff;
-  --surface-color: #0369a1;
+  --surface-color: #1d4ed8;
   --contrast-color: #ffffff;
 }
 
@@ -154,14 +153,14 @@ h6 {
 # Global Header
 --------------------------------------------------------------*/
 .header {
-  --background-color: rgba(255, 255, 255, 0.95);
-  --default-color: #334155;
-  --heading-color: #0f172a;
+  --background-color: rgba(255, 255, 255, 0.96);
+  --default-color: #18181b;
+  --heading-color: #000000;
   color: var(--default-color);
   background-color: var(--background-color);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(226, 232, 240, 0.85);
+  border-bottom: 1px solid #e4e4e7;
   padding: 16px 0;
   transition: all 0.3s ease;
   z-index: 997;
@@ -179,7 +178,7 @@ h6 {
 .header .logo svg {
   height: 32px;
   margin-right: 8px;
-  color: var(--accent-color);
+  color: #2563eb;
   transition: transform 0.3s ease;
 }
 
@@ -192,15 +191,15 @@ h6 {
   margin: 0;
   font-weight: 800;
   letter-spacing: -0.5px;
-  color: var(--heading-color);
+  color: #000000;
 }
 
 .header .logo h1 span {
-  color: var(--accent-color);
+  color: #2563eb;
 }
 
 .scrolled .header {
-  box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.08);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.08);
   background-color: rgba(255, 255, 255, 0.98);
 }
 
@@ -446,18 +445,18 @@ h6 {
 # Global Footer
 --------------------------------------------------------------*/
 .footer {
-  --background-color: #0b1120;
-  --default-color: #94a3b8;
+  --background-color: #000000;
+  --default-color: #a1a1aa;
   --heading-color: #ffffff;
-  --accent-color: #38bdf8;
-  --surface-color: #1e293b;
+  --accent-color: #3b82f6;
+  --surface-color: #09090b;
   --contrast-color: #ffffff;
   color: var(--default-color);
-  background-color: #0b1120 !important;
+  background-color: #000000 !important;
   font-size: 14.5px;
   padding-bottom: 40px;
   position: relative;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 .footer .footer-top {
@@ -484,13 +483,13 @@ h6 {
 }
 
 .footer .footer-about .logo span span {
-  color: #38bdf8;
+  color: #3b82f6;
 }
 
 .footer .footer-about p {
   font-size: 14.5px;
   line-height: 1.7;
-  color: #94a3b8;
+  color: #a1a1aa;
   font-family: var(--default-font);
 }
 
@@ -501,20 +500,20 @@ h6 {
   width: 42px;
   height: 42px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: #111113;
+  border: 1px solid rgba(255, 255, 255, 0.16);
   font-size: 16px;
-  color: #cbd5e1;
+  color: #e4e4e7;
   margin-right: 10px;
   transition: all 0.3s ease;
 }
 
 .footer .social-links a:hover {
-  background: #0284c7;
-  border-color: #0284c7;
+  background: #2563eb;
+  border-color: #2563eb;
   color: #ffffff;
   transform: translateY(-3px);
-  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.4);
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.45);
 }
 
 .footer h4 {
@@ -534,7 +533,7 @@ h6 {
   bottom: 0;
   width: 28px;
   height: 2px;
-  background: #0284c7;
+  background: #2563eb;
   border-radius: 2px;
 }
 
@@ -552,7 +551,7 @@ h6 {
   padding-right: 4px;
   font-size: 12px;
   line-height: 0;
-  color: #38bdf8;
+  color: #3b82f6;
 }
 
 .footer .footer-links ul li {
@@ -566,20 +565,20 @@ h6 {
 }
 
 .footer .footer-links ul a {
-  color: #94a3b8;
+  color: #a1a1aa;
   display: inline-block;
   line-height: 1.4;
   transition: all 0.2s ease;
 }
 
 .footer .footer-links ul a:hover {
-  color: #38bdf8;
+  color: #3b82f6;
   transform: translateX(4px);
 }
 
 .footer .footer-contact p {
   margin-bottom: 6px;
-  color: #94a3b8;
+  color: #a1a1aa;
 }
 
 .footer .footer-contact h4::after {
@@ -589,7 +588,7 @@ h6 {
   bottom: 0;
   width: 28px;
   height: 2px;
-  background: #0284c7;
+  background: #2563eb;
   border-radius: 2px;
 }
 
@@ -597,9 +596,9 @@ h6 {
   padding-top: 25px;
   padding-bottom: 25px;
   margin-top: 30px;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
   background-color: transparent;
-  color: #64748b;
+  color: #71717a;
 }
 
 .footer .copyright p {
@@ -613,11 +612,11 @@ h6 {
 .footer .credits {
   margin-top: 6px;
   font-size: 13px;
-  color: #64748b;
+  color: #71717a;
 }
 
 .footer .credits a {
-  color: #38bdf8;
+  color: #3b82f6;
 }
 
 /*--------------------------------------------------------------
@@ -9159,14 +9158,14 @@ section,
   align-items: center;
   justify-content: center;
   gap: 8px;
-  background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
   color: #ffffff !important;
   padding: 10px 22px !important;
   font-size: 14px !important;
   font-weight: 600 !important;
   border-radius: 50px !important;
   border: none;
-  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.3);
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
   margin-left: 15px;
   text-decoration: none;
@@ -9174,7 +9173,7 @@ section,
 
 .btn-nav-cta:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 22px rgba(2, 132, 199, 0.45);
+  box-shadow: 0 8px 22px rgba(37, 99, 235, 0.5);
   color: #ffffff !important;
 }
 
@@ -9185,16 +9184,16 @@ section,
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f5f9;
+  background: #f4f4f5;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
+  background: #d4d4d8;
   border-radius: 8px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8;
+  background: #a1a1aa;
 }
 
 /* Enhanced Form Inputs & Search */
@@ -9203,18 +9202,18 @@ section,
 .search-form input,
 .form-control {
   border-radius: 12px;
-  border: 1.5px solid #e2e8f0;
+  border: 1.5px solid #e4e4e7;
   transition: all 0.2s ease;
   font-size: 14.5px;
-  color: #1e293b;
+  color: #18181b;
 }
 
 .property-search-form .search-field input:focus,
 .property-search-form .search-field select:focus,
 .search-form input:focus,
 .form-control:focus {
-  border-color: #0284c7 !important;
-  box-shadow: 0 0 0 4px rgba(2, 132, 199, 0.15) !important;
+  border-color: #2563eb !important;
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15) !important;
   outline: none;
 }
 
@@ -9230,8 +9229,8 @@ section,
 .property-item:hover,
 .featured-property-main:hover {
   transform: translateY(-6px);
-  box-shadow: 0 20px 35px -8px rgba(15, 23, 42, 0.12) !important;
-  border-color: rgba(2, 132, 199, 0.3) !important;
+  box-shadow: 0 20px 35px -8px rgba(0, 0, 0, 0.12) !important;
+  border-color: rgba(37, 99, 235, 0.35) !important;
 }
 
 .property-item .property-image,
@@ -9257,11 +9256,11 @@ section,
 .btn-primary,
 .search-btn,
 .search-box .search-btn {
-  background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%) !important;
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%) !important;
   border: none !important;
   border-radius: 10px;
   font-weight: 600;
-  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.3);
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -9269,22 +9268,22 @@ section,
 .search-btn:hover,
 .search-box .search-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 22px rgba(2, 132, 199, 0.45) !important;
-  background: linear-gradient(135deg, #0369a1 0%, #075985 100%) !important;
+  box-shadow: 0 8px 22px rgba(37, 99, 235, 0.5) !important;
+  background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%) !important;
 }
 
 /* Service Items Modern Touch */
 .service-item {
   border-radius: 16px;
-  border: 1px solid #e2e8f0;
+  border: 1px solid #e4e4e7;
   background: #ffffff;
   padding: 32px 28px;
 }
 
 .service-item:hover {
   transform: translateY(-5px);
-  box-shadow: 0 16px 32px -8px rgba(15, 23, 42, 0.08);
-  border-color: rgba(2, 132, 199, 0.25);
+  box-shadow: 0 16px 32px -8px rgba(0, 0, 0, 0.08);
+  border-color: rgba(37, 99, 235, 0.3);
 }
 
 /* Status Badges */
@@ -9309,7 +9308,7 @@ section,
   z-index: 1;
 }
 
-/* Floating Ambient Orbs */
+/* Floating Ambient Orbs - Black & White with Blue */
 .abstract-orb {
   position: absolute;
   border-radius: 50%;
@@ -9324,7 +9323,7 @@ section,
   height: 440px;
   top: -80px;
   right: -60px;
-  background: radial-gradient(circle, rgba(2, 132, 199, 0.28) 0%, rgba(14, 165, 233, 0.08) 60%, transparent 100%);
+  background: radial-gradient(circle, rgba(37, 99, 235, 0.24) 0%, rgba(59, 130, 246, 0.08) 60%, transparent 100%);
   animation: orbDrift1 18s ease-in-out infinite alternate;
 }
 
@@ -9333,7 +9332,7 @@ section,
   height: 380px;
   bottom: 20px;
   left: -80px;
-  background: radial-gradient(circle, rgba(56, 189, 248, 0.22) 0%, rgba(2, 132, 199, 0.05) 60%, transparent 100%);
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.2) 0%, rgba(37, 99, 235, 0.05) 60%, transparent 100%);
   animation: orbDrift2 22s ease-in-out infinite alternate;
 }
 
@@ -9342,7 +9341,7 @@ section,
   height: 280px;
   top: 35%;
   right: 42%;
-  background: radial-gradient(circle, rgba(245, 158, 11, 0.12) 0%, rgba(217, 119, 6, 0.03) 60%, transparent 100%);
+  background: radial-gradient(circle, rgba(0, 0, 0, 0.08) 0%, rgba(37, 99, 235, 0.06) 60%, transparent 100%);
   animation: orbDrift3 25s ease-in-out infinite alternate;
 }
 
@@ -9369,8 +9368,8 @@ section,
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(to right, rgba(2, 132, 199, 0.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(2, 132, 199, 0.05) 1px, transparent 1px);
+    linear-gradient(to right, rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
   background-size: 42px 42px;
   -webkit-mask-image: radial-gradient(ellipse 75% 70% at 50% 45%, #000 35%, transparent 85%);
   mask-image: radial-gradient(ellipse 75% 70% at 50% 45%, #000 35%, transparent 85%);
@@ -9382,7 +9381,7 @@ section,
 .abstract-dot-pattern {
   position: absolute;
   inset: 0;
-  background-image: radial-gradient(rgba(2, 132, 199, 0.14) 1.2px, transparent 1.2px);
+  background-image: radial-gradient(rgba(37, 99, 235, 0.15) 1.2px, transparent 1.2px);
   background-size: 26px 26px;
   -webkit-mask-image: radial-gradient(ellipse 70% 65% at 50% 50%, #000 40%, transparent 90%);
   mask-image: radial-gradient(ellipse 70% 65% at 50% 50%, #000 40%, transparent 90%);
@@ -9394,10 +9393,10 @@ section,
 .hero {
   position: relative;
   background:
-    radial-gradient(circle at 12% 18%, rgba(2, 132, 199, 0.09) 0%, transparent 45%),
-    radial-gradient(circle at 88% 22%, rgba(14, 165, 233, 0.08) 0%, transparent 45%),
-    radial-gradient(circle at 50% 88%, rgba(245, 158, 11, 0.04) 0%, transparent 50%),
-    linear-gradient(180deg, #ffffff 0%, #f8fafc 100%) !important;
+    radial-gradient(circle at 12% 18%, rgba(37, 99, 235, 0.08) 0%, transparent 45%),
+    radial-gradient(circle at 88% 22%, rgba(59, 130, 246, 0.07) 0%, transparent 45%),
+    radial-gradient(circle at 50% 88%, rgba(0, 0, 0, 0.03) 0%, transparent 50%),
+    linear-gradient(180deg, #ffffff 0%, #fafafa 100%) !important;
   overflow: hidden;
 }
 
@@ -9409,7 +9408,7 @@ section,
 /* Call To Action Abstract Dark Luxury Mesh */
 .call-to-action {
   position: relative;
-  background-color: #080d1a !important;
+  background-color: #000000 !important;
   color: #ffffff;
   overflow: hidden;
   padding: 100px 0;
@@ -9419,10 +9418,10 @@ section,
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(circle at 18% 25%, rgba(2, 132, 199, 0.3) 0%, transparent 50%),
-    radial-gradient(circle at 82% 75%, rgba(14, 165, 233, 0.24) 0%, transparent 50%),
-    radial-gradient(circle at 50% 50%, rgba(245, 158, 11, 0.09) 0%, transparent 60%),
-    linear-gradient(135deg, #070b14 0%, #0f172a 100%) !important;
+    radial-gradient(circle at 18% 25%, rgba(37, 99, 235, 0.35) 0%, transparent 50%),
+    radial-gradient(circle at 82% 75%, rgba(59, 130, 246, 0.28) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0.9) 0%, transparent 60%),
+    linear-gradient(135deg, #000000 0%, #09090b 100%) !important;
   z-index: 1;
 }
 
@@ -9431,8 +9430,8 @@ section,
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
   background-size: 42px 42px;
   -webkit-mask-image: radial-gradient(ellipse 75% 75% at 50% 50%, #000 35%, transparent 85%);
   mask-image: radial-gradient(ellipse 75% 75% at 50% 50%, #000 35%, transparent 85%);
@@ -9446,7 +9445,7 @@ section,
 }
 
 .call-to-action .cta-content p {
-  color: #94a3b8 !important;
+  color: #a1a1aa !important;
   font-size: 1.15rem;
 }
 
@@ -9463,25 +9462,25 @@ section,
 
 .call-to-action .btn-outline:hover {
   background: rgba(255, 255, 255, 0.12) !important;
-  border-color: #38bdf8 !important;
-  color: #38bdf8 !important;
+  border-color: #3b82f6 !important;
+  color: #3b82f6 !important;
   transform: translateY(-2px);
 }
 
 .call-to-action .cta-features .feature-item {
-  color: #cbd5e1;
+  color: #d4d4d8;
 }
 
 .call-to-action .cta-features .feature-item i {
-  color: #38bdf8;
+  color: #3b82f6;
 }
 
 /* Page Title Abstract Geometric Background */
 .page-title {
   position: relative;
   overflow: hidden;
-  background: #f8fafc !important;
-  border-bottom: 1px solid rgba(226, 232, 240, 0.85);
+  background: #fafafa !important;
+  border-bottom: 1px solid #e4e4e7;
   padding: 38px 0;
 }
 
@@ -9489,7 +9488,7 @@ section,
   content: "";
   position: absolute;
   inset: 0;
-  background-image: radial-gradient(rgba(2, 132, 199, 0.13) 1.2px, transparent 1.2px);
+  background-image: radial-gradient(rgba(37, 99, 235, 0.14) 1.2px, transparent 1.2px);
   background-size: 24px 24px;
   -webkit-mask-image: radial-gradient(ellipse 75% 70% at 75% 50%, #000 30%, transparent 85%);
   mask-image: radial-gradient(ellipse 75% 70% at 75% 50%, #000 30%, transparent 85%);
@@ -9504,7 +9503,7 @@ section,
   width: 260px;
   height: 260px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(2, 132, 199, 0.14) 0%, rgba(14, 165, 233, 0.04) 65%, transparent 100%);
+  background: radial-gradient(circle, rgba(37, 99, 235, 0.14) 0%, rgba(59, 130, 246, 0.04) 65%, transparent 100%);
   filter: blur(45px);
   -webkit-filter: blur(45px);
   pointer-events: none;
@@ -9519,6 +9518,6 @@ section,
   font-size: 28px;
   font-weight: 800;
   letter-spacing: -0.5px;
-  color: #0f172a;
+  color: #000000;
 }
 

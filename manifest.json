@@ -4,8 +4,8 @@
   "description": "Premier real estate platform for luxury homes, city apartments, and verified properties.",
   "start_url": "./index.html",
   "display": "standalone",
-  "background_color": "#0b1120",
-  "theme_color": "#0284c7",
+  "background_color": "#000000",
+  "theme_color": "#2563eb",
   "icons": [
     {
       "src": "assets/img/favicon.png",

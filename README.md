@@ -11,11 +11,11 @@ A modern, responsive real estate web application and website template designed w
   - **Architectural Grid Matrix**: Geometric dot-grid overlay with elliptical radial masks for an architectural aesthetic.
   - **Dark Luxury Mesh**: Hero Call-To-Action section featuring a deep midnight-slate (`#080d1a`) geometric polygon pattern with ambient lighting.
   - **Inner Page Titles**: Clean geometric dot matrix and soft accent glow across all 14 page banners.
-- **Modern Luxury Color Palette**:
-  - **Brand Primary Accent**: Vibrant Ocean Azure (`#0284c7`) with deep ocean hover (`#0369a1`).
-  - **Headings & Body**: Executive Slate-900 (`#0f172a`) and readable Slate-700 (`#334155`).
-  - **Surfaces**: Crisp white cards on soft Slate-50 (`#f8fafc`).
-  - **Midnight Footer**: Deep navy-slate (`#0b1120`) with dedicated real estate services and social links.
+- **Monochrome Minimalist Luxury Color Palette (Black & White with Blue)**:
+  - **Brand Primary Accent**: Signature Electric Royal Blue (`#2563eb`) with deep royal hover (`#1d4ed8`).
+  - **Headings & Body**: True Jet Black (`#000000`) for commanding headlines and readable Charcoal (`#18181b`) for body text.
+  - **Surfaces**: Crisp pure white (`#ffffff`) cards on clean minimalist off-white (`#fafafa`).
+  - **Jet Black Footer**: High-contrast deep black (`#000000`) with vibrant blue highlights (`#3b82f6` / `#2563eb`) and pure white headings.
 - **Glassmorphism Sticky Header**: Translucent frosted navigation bar (`backdrop-filter: blur(16px)`) with an integrated **"Explore Homes"** CTA button.
 - **High-End Typography**: Google Font **Plus Jakarta Sans** paired with Montserrat and Roboto.
 - **Micro-Interactions**: Smooth card hover elevation, property image zoom (`1.05x`), focused input glow rings, and custom sleek scrollbars.
