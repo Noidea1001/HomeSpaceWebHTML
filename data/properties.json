@@ -1,0 +1,233 @@
+[
+  {
+    "id": "prop-1",
+    "title": "Luxury Modern Villa with Pool",
+    "price": 1850000,
+    "type": "villa",
+    "status": "for-sale",
+    "featured": true,
+    "address": "3458 Sunset Boulevard, Beverly Hills, CA 90210",
+    "city": "Beverly Hills",
+    "bedrooms": 5,
+    "bathrooms": 4,
+    "sqft": 3400,
+    "yearBuilt": 2024,
+    "mainImage": "assets/img/real-estate/property-exterior-2.webp",
+    "gallery": [
+      "assets/img/real-estate/property-exterior-2.webp",
+      "assets/img/real-estate/property-interior-4.webp",
+      "assets/img/real-estate/property-interior-1.webp",
+      "assets/img/real-estate/features-1.webp"
+    ],
+    "description": "Architecturally striking contemporary residence featuring floor-to-ceiling glass walls, private infinity pool, custom Italian chef's kitchen, and expansive outdoor terrace for entertaining.",
+    "features": ["Infinity Pool", "Smart Home Automation", "Private Garage", "Wine Cellar", "Central AC", "Solar Panels", "Security System"],
+    "agent": {
+      "name": "Sarah Johnson",
+      "role": "Senior Luxury Advisor",
+      "avatar": "assets/img/real-estate/agent-1.webp",
+      "phone": "+1 (555) 234-5678",
+      "email": "sarah.j@homespace.com"
+    }
+  },
+  {
+    "id": "prop-2",
+    "title": "Contemporary Penthouse with Skyline Views",
+    "price": 1250000,
+    "type": "apartment",
+    "status": "for-sale",
+    "featured": true,
+    "address": "782 Grand Avenue, Penthouse B, Downtown, CA 90015",
+    "city": "Downtown",
+    "bedrooms": 3,
+    "bathrooms": 3,
+    "sqft": 2100,
+    "yearBuilt": 2023,
+    "mainImage": "assets/img/real-estate/property-exterior-8.webp",
+    "gallery": [
+      "assets/img/real-estate/property-exterior-8.webp",
+      "assets/img/real-estate/property-interior-2.webp",
+      "assets/img/real-estate/property-interior-5.webp",
+      "assets/img/real-estate/features-2.webp"
+    ],
+    "description": "Spectacular dual-level sky residence in the heart of Downtown. Offers 360-degree city skyline panoramas, wrap-around private terrace, bespoke cabinetry, and 24/7 concierge.",
+    "features": ["Skyline Terrace", "24/7 Concierge", "Valet Parking", "Fitness Center", "Spa & Sauna", "Floor-to-Ceiling Windows"],
+    "agent": {
+      "name": "Michael Chen",
+      "role": "Downtown District Specialist",
+      "avatar": "assets/img/real-estate/agent-7.webp",
+      "phone": "+1 (555) 345-6789",
+      "email": "michael.c@homespace.com"
+    }
+  },
+  {
+    "id": "prop-3",
+    "title": "Minimalist Designer Waterfront Condo",
+    "price": 875000,
+    "type": "condo",
+    "status": "for-sale",
+    "featured": false,
+    "address": "1204 Ocean Way, Marina District, CA 90401",
+    "city": "Marina District",
+    "bedrooms": 2,
+    "bathrooms": 2,
+    "sqft": 1450,
+    "yearBuilt": 2022,
+    "mainImage": "assets/img/real-estate/property-exterior-3.webp",
+    "gallery": [
+      "assets/img/real-estate/property-exterior-3.webp",
+      "assets/img/real-estate/property-interior-6.webp",
+      "assets/img/real-estate/property-interior-7.webp"
+    ],
+    "description": "Sun-drenched oceanfront condominium with organic Scandinavian interior styling, open-concept layout, engineered oak floors, and private ocean-view balcony.",
+    "features": ["Ocean View", "Private Balcony", "Heated Pool", "Covered Parking", "Hardwood Floors", "In-Unit Laundry"],
+    "agent": {
+      "name": "David Miller",
+      "role": "Coastal Property Expert",
+      "avatar": "assets/img/real-estate/agent-2.webp",
+      "phone": "+1 (555) 456-7890",
+      "email": "david.m@homespace.com"
+    }
+  },
+  {
+    "id": "prop-4",
+    "title": "Luxury Family Estate with Private Gardens",
+    "price": 2450000,
+    "type": "house",
+    "status": "for-sale",
+    "featured": true,
+    "address": "520 Highland Crest, Pasadena, CA 91101",
+    "city": "Pasadena",
+    "bedrooms": 6,
+    "bathrooms": 5,
+    "sqft": 4800,
+    "yearBuilt": 2021,
+    "mainImage": "assets/img/real-estate/property-exterior-4.webp",
+    "gallery": [
+      "assets/img/real-estate/property-exterior-4.webp",
+      "assets/img/real-estate/property-interior-8.webp",
+      "assets/img/real-estate/features-3.webp"
+    ],
+    "description": "Sprawling architectural sanctuary nestled among mature oaks. Features high vaulted ceilings, gourmet double-island kitchen, detached guest casita, and manicured private grounds.",
+    "features": ["Detached Guest House", "Gourmet Kitchen", "Private Grounds", "Tennis Court", "Fire Pit", "Three-Car Garage"],
+    "agent": {
+      "name": "Amanda Rodriguez",
+      "role": "Estate Portfolio Manager",
+      "avatar": "assets/img/real-estate/agent-3.webp",
+      "phone": "+1 (555) 567-8901",
+      "email": "amanda.r@homespace.com"
+    }
+  },
+  {
+    "id": "prop-5",
+    "title": "Modern Loft in Arts & Cultural Quarter",
+    "price": 620000,
+    "type": "apartment",
+    "status": "for-sale",
+    "featured": false,
+    "address": "409 Studio Lane, Apt 304, Arts District, CA 90013",
+    "city": "Arts District",
+    "bedrooms": 1,
+    "bathrooms": 1.5,
+    "sqft": 1100,
+    "yearBuilt": 2020,
+    "mainImage": "assets/img/real-estate/property-exterior-5.webp",
+    "gallery": [
+      "assets/img/real-estate/property-exterior-5.webp",
+      "assets/img/real-estate/property-interior-4.webp"
+    ],
+    "description": "Urban chic industrial loft featuring exposed brick, polished concrete floors, soaring 14-foot ceilings, and large factory-style steel frame windows.",
+    "features": ["Exposed Brick", "High Ceilings", "Rooftop Deck", "Bike Storage", "Pet Friendly", "EV Charging"],
+    "agent": {
+      "name": "Marcus Vance",
+      "role": "Urban & Loft Specialist",
+      "avatar": "assets/img/real-estate/agent-4.webp",
+      "phone": "+1 (555) 678-9012",
+      "email": "marcus.v@homespace.com"
+    }
+  },
+  {
+    "id": "prop-6",
+    "title": "Executive Hillside Residence with Infinity Deck",
+    "price": 3100000,
+    "type": "villa",
+    "status": "for-sale",
+    "featured": true,
+    "address": "890 Bel Air Crest, Bel Air, CA 90077",
+    "city": "Bel Air",
+    "bedrooms": 5,
+    "bathrooms": 6,
+    "sqft": 5200,
+    "yearBuilt": 2024,
+    "mainImage": "assets/img/real-estate/property-exterior-9.webp",
+    "gallery": [
+      "assets/img/real-estate/property-exterior-9.webp",
+      "assets/img/real-estate/property-interior-9.webp",
+      "assets/img/real-estate/features-5.webp"
+    ],
+    "description": "Masterwork of modern engineering overlooking canyon and city lights. Features seamless indoor-outdoor pocket doors, floating glass staircase, and private wellness spa.",
+    "features": ["Panoramic Canyon View", "Wellness Spa", "Home Cinema", "Zero-Edge Pool", "Solar Array", "Security Guarded Gate"],
+    "agent": {
+      "name": "Sarah Johnson",
+      "role": "Senior Luxury Advisor",
+      "avatar": "assets/img/real-estate/agent-1.webp",
+      "phone": "+1 (555) 234-5678",
+      "email": "sarah.j@homespace.com"
+    }
+  },
+  {
+    "id": "prop-7",
+    "title": "Sunlit Coastal Townhouse Near Beachfront",
+    "price": 940000,
+    "type": "house",
+    "status": "for-sale",
+    "featured": false,
+    "address": "218 Pacific Heights Road, Santa Monica, CA 90403",
+    "city": "Santa Monica",
+    "bedrooms": 3,
+    "bathrooms": 2.5,
+    "sqft": 1850,
+    "yearBuilt": 2021,
+    "mainImage": "assets/img/real-estate/property-exterior-1.webp",
+    "gallery": [
+      "assets/img/real-estate/property-exterior-1.webp",
+      "assets/img/real-estate/property-interior-5.webp"
+    ],
+    "description": "Multi-level coastal townhouse just moments from sandy beaches. Gourmet kitchen with quartz countertops, rooftop stargazing deck, and private two-car attached garage.",
+    "features": ["Walk to Beach", "Rooftop Stargazing Deck", "Quartz Counters", "Attached Garage", "Central Heating"],
+    "agent": {
+      "name": "David Miller",
+      "role": "Coastal Property Expert",
+      "avatar": "assets/img/real-estate/agent-2.webp",
+      "phone": "+1 (555) 456-7890",
+      "email": "david.m@homespace.com"
+    }
+  },
+  {
+    "id": "prop-8",
+    "title": "Luxury High-Rise Suite with Concierge",
+    "price": 4500,
+    "type": "apartment",
+    "status": "for-rent",
+    "featured": false,
+    "address": "100 Wilshire Blvd, Unit 1802, Santa Monica, CA 90401",
+    "city": "Santa Monica",
+    "bedrooms": 2,
+    "bathrooms": 2,
+    "sqft": 1300,
+    "yearBuilt": 2023,
+    "mainImage": "assets/img/real-estate/property-exterior-7.webp",
+    "gallery": [
+      "assets/img/real-estate/property-exterior-7.webp",
+      "assets/img/real-estate/property-interior-7.webp"
+    ],
+    "description": "Furnished executive rental with premium designer appointments, floor-to-ceiling soundproof glass, weekly maid service option, and luxury building club amenities.",
+    "features": ["Fully Furnished", "Ocean Facing", "24/7 Security", "Rooftop Pool & Bar", "Fitness Studio"],
+    "agent": {
+      "name": "Michael Chen",
+      "role": "Downtown District Specialist",
+      "avatar": "assets/img/real-estate/agent-7.webp",
+      "phone": "+1 (555) 345-6789",
+      "email": "michael.c@homespace.com"
+    }
+  }
+]
