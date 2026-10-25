@@ -1,0 +1,7 @@
+# Robots.txt for HomeSpace Real Estate Platform
+User-agent: *
+Allow: /
+Disallow: /forms/
+
+# Sitemap location
+Sitemap: https://noidea1001.github.io/HomeSpaceWebHTML/sitemap.xml

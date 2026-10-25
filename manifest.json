@@ -1,0 +1,21 @@
+{
+  "name": "HomeSpace Real Estate",
+  "short_name": "HomeSpace",
+  "description": "Premier real estate platform for luxury homes, city apartments, and verified properties.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#0b1120",
+  "theme_color": "#0284c7",
+  "icons": [
+    {
+      "src": "assets/img/favicon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/img/apple-touch-icon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
