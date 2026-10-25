@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Admin Dashboard — HomeSpace Property Management</title>
+  <meta name="description" content="Manage real estate listings dynamically without touching code.">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Montserrat:wght@400;500;600;700;800&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet">
+
+  <style>
+    body {
+      background-color: #fafafa;
+      color: #18181b;
+      font-family: var(--default-font);
+    }
+    .admin-card {
+      background: #ffffff;
+      border: 1px solid #e4e4e7;
+      border-radius: 14px;
+      padding: 24px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+    }
+    .metric-val {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #000000;
+    }
+    .metric-label {
+      font-size: 13px;
+      color: #71717a;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .admin-table th {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #71717a;
+      background: #f4f4f5;
+      border-bottom: 1px solid #e4e4e7;
+      padding: 14px 16px;
+    }
+    .admin-table td {
+      padding: 14px 16px;
+      vertical-align: middle;
+      border-bottom: 1px solid #f4f4f5;
+      font-size: 14px;
+    }
+    .prop-thumb {
+      width: 58px;
+      height: 48px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+    .badge-pill-custom {
+      font-size: 11.5px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 20px;
+    }
+    .btn-blue {
+      background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+      color: #ffffff;
+      border: none;
+      font-weight: 600;
+      border-radius: 8px;
+      padding: 8px 18px;
+      transition: all 0.2s ease;
+    }
+    .btn-blue:hover {
+      box-shadow: 0 4px 14px rgba(37, 99, 235, 0.4);
+      color: #ffffff;
+      transform: translateY(-1px);
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Top Admin Navbar -->
+  <header class="header sticky-top" style="border-bottom: 1px solid #e4e4e7;">
+    <div class="container d-flex align-items-center justify-content-between">
+      <a href="index.html" class="logo d-flex align-items-center" style="text-decoration: none;">
+        <svg class="my-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="height: 30px; margin-right: 8px; color: #2563eb;">
+          <path d="M22 22L2 22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path>
+          <path d="M2 11L6.06296 7.74968M22 11L13.8741 4.49931C12.7784 3.62279 11.2216 3.62279 10.1259 4.49931L9.34398 5.12486" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path>
+          <path d="M4 22V9.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path>
+          <path d="M20 9.5V13.5M20 22V17.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path>
+          <path d="M15 22V17C15 15.5858 15 14.8787 14.5607 14.4393C14.1213 14 13.4142 14 12 14C10.5858 14 9.87868 14 9.43934 14.4393M9 22V17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path>
+        </svg>
+        <h1 class="sitename" style="font-size: 22px; margin: 0; font-weight: 800; color: #000000;">Home<span style="color: #2563eb;">Space</span> <span style="font-size: 13px; font-weight: 600; background: #000; color: #fff; padding: 2px 8px; border-radius: 6px; margin-left: 6px;">ADMIN</span></h1>
+      </a>
+
+      <div class="d-flex align-items-center gap-3">
+        <a href="properties.html" class="btn btn-sm btn-outline-dark" style="border-radius: 8px; font-weight: 600;" target="_blank">
+          <i class="bi bi-eye"></i> View Live Site
+        </a>
+        <button class="btn btn-sm btn-blue" id="btn-open-add-modal">
+          <i class="bi bi-plus-lg"></i> Add New Property
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container py-4">
+
+    <!-- Notification Toast / Alert -->
+    <div id="admin-alert" class="alert alert-success d-none mb-4" role="alert" style="border-radius: 10px;">
+      <i class="bi bi-check-circle-fill me-2"></i> <span id="alert-text">Listing updated successfully!</span>
+    </div>
+
+    <!-- Analytics Metrics Overview -->
+    <div class="row g-3 mb-4">
+      <div class="col-lg-3 col-6">
+        <div class="admin-card text-center text-lg-start">
+          <div class="metric-label">Total Listings</div>
+          <div class="metric-val" id="metric-total">0</div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-6">
+        <div class="admin-card text-center text-lg-start">
+          <div class="metric-label">For Sale</div>
+          <div class="metric-val" id="metric-sale" style="color: #2563eb;">0</div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-6">
+        <div class="admin-card text-center text-lg-start">
+          <div class="metric-label">For Rent</div>
+          <div class="metric-val" id="metric-rent">0</div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-6">
+        <div class="admin-card text-center text-lg-start">
+          <div class="metric-label">Avg Portfolio Price</div>
+          <div class="metric-val" id="metric-avg" style="font-size: 1.6rem; line-height: 2rem;">$0</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Controls & Data Table -->
+    <div class="admin-card mb-4">
+      <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-3">
+        <div>
+          <h4 style="font-weight: 800; margin: 0; color: #000000;">Properties Catalog Database</h4>
+          <p class="text-muted small mb-0">Changes save instantly to dynamic storage without needing code edits.</p>
+        </div>
+
+        <div class="d-flex gap-2">
+          <button class="btn btn-sm btn-outline-secondary" id="btn-export-json" title="Download current JSON database">
+            <i class="bi bi-download"></i> Export JSON
+          </button>
+          <button class="btn btn-sm btn-outline-danger" id="btn-reset-db" title="Restore original sample listings">
+            <i class="bi bi-arrow-counterclockwise"></i> Reset DB
+          </button>
+        </div>
+      </div>
+
+      <!-- Quick Search Filter -->
+      <div class="row g-2 mb-3">
+        <div class="col-md-5">
+          <div class="input-group">
+            <span class="input-group-text bg-white border-end-0"><i class="bi bi-search text-muted"></i></span>
+            <input type="text" class="form-control border-start-0" id="admin-search-input" placeholder="Search by title, address, or city...">
+          </div>
+        </div>
+        <div class="col-md-3">
+          <select class="form-select" id="admin-filter-type">
+            <option value="all">All Types</option>
+            <option value="villa">Villa</option>
+            <option value="house">House</option>
+            <option value="apartment">Apartment</option>
+            <option value="condo">Condominium</option>
+          </select>
+        </div>
+        <div class="col-md-4 text-md-end text-muted small align-self-center">
+          <span id="admin-count-label">Showing all properties</span>
+        </div>
+      </div>
+
+      <!-- Table -->
+      <div class="table-responsive">
+        <table class="table admin-table mb-0">
+          <thead>
+            <tr>
+              <th>Preview</th>
+              <th>Property Details</th>
+              <th>Type</th>
+              <th>Price</th>
+              <th>Specs</th>
+              <th>Status</th>
+              <th class="text-end">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="admin-properties-tbody">
+            <!-- Dynamically populated -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Add / Edit Property Modal -->
+  <div class="modal fade" id="propertyModal" tabindex="-1" aria-labelledby="propertyModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content" style="border-radius: 16px; border: 1px solid #e4e4e7; overflow: hidden;">
+        <div class="modal-header" style="background: #000; color: #fff;">
+          <h5 class="modal-title font-weight-bold" id="propertyModalLabel">Add New Property</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <form id="property-form">
+          <div class="modal-body p-4">
+            <input type="hidden" id="form-prop-id">
+
+            <div class="row g-3">
+              <div class="col-md-8">
+                <label class="form-label font-weight-bold small">Property Title *</label>
+                <input type="text" class="form-control" id="form-prop-title" required placeholder="e.g. Modern Sunset Luxury Villa">
+              </div>
+
+              <div class="col-md-4">
+                <label class="form-label font-weight-bold small">Price (USD) *</label>
+                <input type="number" class="form-control" id="form-prop-price" required placeholder="e.g. 1250000">
+              </div>
+
+              <div class="col-md-4">
+                <label class="form-label font-weight-bold small">Property Type</label>
+                <select class="form-select" id="form-prop-type">
+                  <option value="villa">Villa</option>
+                  <option value="house">House</option>
+                  <option value="apartment">Apartment</option>
+                  <option value="condo">Condo</option>
+                </select>
+              </div>
+
+              <div class="col-md-4">
+                <label class="form-label font-weight-bold small">Listing Status</label>
+                <select class="form-select" id="form-prop-status">
+                  <option value="for-sale">For Sale</option>
+                  <option value="for-rent">For Rent</option>
+                </select>
+              </div>
+
+              <div class="col-md-4 d-flex align-items-center">
+                <div class="form-check mt-3">
+                  <input class="form-check-input" type="checkbox" id="form-prop-featured">
+                  <label class="form-check-label small font-weight-bold" for="form-prop-featured">
+                    Mark as Featured Listing
+                  </label>
+                </div>
+              </div>
+
+              <div class="col-md-8">
+                <label class="form-label font-weight-bold small">Full Street Address *</label>
+                <input type="text" class="form-control" id="form-prop-address" required placeholder="e.g. 3458 Sunset Boulevard">
+              </div>
+
+              <div class="col-md-4">
+                <label class="form-label font-weight-bold small">City / Neighborhood</label>
+                <input type="text" class="form-control" id="form-prop-city" placeholder="e.g. Beverly Hills">
+              </div>
+
+              <div class="col-md-3 col-6">
+                <label class="form-label font-weight-bold small">Bedrooms</label>
+                <input type="number" class="form-control" id="form-prop-beds" value="3" min="1">
+              </div>
+
+              <div class="col-md-3 col-6">
+                <label class="form-label font-weight-bold small">Bathrooms</label>
+                <input type="number" step="0.5" class="form-control" id="form-prop-baths" value="2" min="1">
+              </div>
+
+              <div class="col-md-3 col-6">
+                <label class="form-label font-weight-bold small">Square Feet (Sq Ft)</label>
+                <input type="number" class="form-control" id="form-prop-sqft" value="2200" min="100">
+              </div>
+
+              <div class="col-md-3 col-6">
+                <label class="form-label font-weight-bold small">Year Built</label>
+                <input type="number" class="form-control" id="form-prop-year" value="2024">
+              </div>
+
+              <div class="col-md-12">
+                <label class="form-label font-weight-bold small">Main Image URL or Local Asset Path</label>
+                <input type="text" class="form-control" id="form-prop-image" value="assets/img/real-estate/property-exterior-2.webp" placeholder="assets/img/real-estate/property-exterior-1.webp">
+                <div class="form-text small">Presets: <code>assets/img/real-estate/property-exterior-1.webp</code> to <code>property-exterior-9.webp</code></div>
+              </div>
+
+              <div class="col-12">
+                <label class="form-label font-weight-bold small">Property Description</label>
+                <textarea class="form-control" id="form-prop-desc" rows="3" placeholder="Describe the property highlights, views, amenities..."></textarea>
+              </div>
+
+              <div class="col-12">
+                <label class="form-label font-weight-bold small">Features / Amenities (comma separated)</label>
+                <input type="text" class="form-control" id="form-prop-features" placeholder="Pool, Smart Home, Garage, Wine Cellar, Central AC">
+              </div>
+            </div>
+          </div>
+
+          <div class="modal-footer bg-light">
+            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+            <button type="submit" class="btn btn-blue" id="btn-save-property">Save Property</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/properties-engine.js"></script>
+
+  <!-- Admin Controller Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      let properties = await PropertiesEngine.loadData();
+      const modalEl = document.getElementById('propertyModal');
+      const propertyModal = new bootstrap.Modal(modalEl);
+      const tbody = document.getElementById('admin-properties-tbody');
+      const alertBox = document.getElementById('admin-alert');
+      const alertText = document.getElementById('alert-text');
+
+      function showAlert(msg) {
+        alertText.textContent = msg;
+        alertBox.classList.remove('d-none');
+        setTimeout(() => alertBox.classList.add('d-none'), 3500);
+      }
+
+      function updateMetrics() {
+        document.getElementById('metric-total').textContent = properties.length;
+        const forSale = properties.filter(p => p.status === 'for-sale').length;
+        const forRent = properties.filter(p => p.status === 'for-rent').length;
+        document.getElementById('metric-sale').textContent = forSale;
+        document.getElementById('metric-rent').textContent = forRent;
+
+        const totalVal = properties.reduce((acc, p) => acc + (p.price || 0), 0);
+        const avg = properties.length > 0 ? Math.round(totalVal / properties.length) : 0;
+        document.getElementById('metric-avg').textContent = '$' + avg.toLocaleString();
+      }
+
+      function renderTable(list) {
+        if (!list || list.length === 0) {
+          tbody.innerHTML = `<tr><td colspan="7" class="text-center py-4 text-muted">No properties found. Click "+ Add New Property" to add one.</td></tr>`;
+          return;
+        }
+
+        tbody.innerHTML = list.map(item => `
+          <tr>
+            <td>
+              <img src="${item.mainImage || 'assets/img/real-estate/property-exterior-1.webp'}" alt="${item.title}" class="prop-thumb">
+            </td>
+            <td>
+              <div class="fw-bold" style="color: #000;">${item.title}</div>
+              <div class="text-muted small"><i class="bi bi-geo-alt"></i> ${item.address || ''}</div>
+            </td>
+            <td>
+              <span class="badge bg-light text-dark border text-uppercase" style="font-size: 11px;">${item.type}</span>
+            </td>
+            <td class="fw-bold">
+              ${PropertiesEngine.formatPrice(item.price, item.status)}
+            </td>
+            <td class="small text-muted">
+              ${item.bedrooms}b / ${item.bathrooms}ba • ${item.sqft ? item.sqft.toLocaleString() + ' sqft' : ''}
+            </td>
+            <td>
+              ${item.status === 'for-sale' ? '<span class="badge-pill-custom" style="background:#2563eb;color:#fff;">Sale</span>' : '<span class="badge-pill-custom" style="background:#000;color:#fff;">Rent</span>'}
+              ${item.featured ? '<span class="badge-pill-custom ms-1" style="background:#09090b;color:#fff;">Featured</span>' : ''}
+            </td>
+            <td class="text-end">
+              <a href="property-details.html?id=${item.id}" target="_blank" class="btn btn-sm btn-outline-secondary me-1" title="View Details">
+                <i class="bi bi-box-arrow-up-right"></i>
+              </a>
+              <button class="btn btn-sm btn-outline-primary btn-edit-prop me-1" data-id="${item.id}" title="Edit Property">
+                <i class="bi bi-pencil"></i>
+              </button>
+              <button class="btn btn-sm btn-outline-danger btn-delete-prop" data-id="${item.id}" title="Delete Property">
+                <i class="bi bi-trash"></i>
+              </button>
+            </td>
+          </tr>
+        `).join('');
+
+        // Attach edit/delete listeners
+        tbody.querySelectorAll('.btn-edit-prop').forEach(btn => {
+          btn.addEventListener('click', () => openEditModal(btn.getAttribute('data-id')));
+        });
+        tbody.querySelectorAll('.btn-delete-prop').forEach(btn => {
+          btn.addEventListener('click', () => deleteProperty(btn.getAttribute('data-id')));
+        });
+      }
+
+      function filterAdminList() {
+        const query = document.getElementById('admin-search-input').value.trim().toLowerCase();
+        const typeFilter = document.getElementById('admin-filter-type').value;
+
+        let filtered = properties.filter(item => {
+          if (typeFilter !== 'all' && item.type !== typeFilter) return false;
+          if (query) {
+            const matches = (item.title || '').toLowerCase().includes(query) ||
+                            (item.address || '').toLowerCase().includes(query) ||
+                            (item.city || '').toLowerCase().includes(query);
+            if (!matches) return false;
+          }
+          return true;
+        });
+
+        document.getElementById('admin-count-label').textContent = `Showing ${filtered.length} of ${properties.length} listings`;
+        renderTable(filtered);
+      }
+
+      document.getElementById('admin-search-input').addEventListener('input', filterAdminList);
+      document.getElementById('admin-filter-type').addEventListener('change', filterAdminList);
+
+      // Open Add Modal
+      document.getElementById('btn-open-add-modal').addEventListener('click', () => {
+        document.getElementById('property-form').reset();
+        document.getElementById('form-prop-id').value = '';
+        document.getElementById('propertyModalLabel').textContent = 'Add New Property Listing';
+        propertyModal.show();
+      });
+
+      // Open Edit Modal
+      function openEditModal(id) {
+        const prop = properties.find(p => p.id === id);
+        if (!prop) return;
+
+        document.getElementById('form-prop-id').value = prop.id;
+        document.getElementById('form-prop-title').value = prop.title || '';
+        document.getElementById('form-prop-price').value = prop.price || '';
+        document.getElementById('form-prop-type').value = prop.type || 'villa';
+        document.getElementById('form-prop-status').value = prop.status || 'for-sale';
+        document.getElementById('form-prop-featured').checked = !!prop.featured;
+        document.getElementById('form-prop-address').value = prop.address || '';
+        document.getElementById('form-prop-city').value = prop.city || '';
+        document.getElementById('form-prop-beds').value = prop.bedrooms || 3;
+        document.getElementById('form-prop-baths').value = prop.bathrooms || 2;
+        document.getElementById('form-prop-sqft').value = prop.sqft || 2000;
+        document.getElementById('form-prop-year').value = prop.yearBuilt || 2024;
+        document.getElementById('form-prop-image').value = prop.mainImage || 'assets/img/real-estate/property-exterior-1.webp';
+        document.getElementById('form-prop-desc').value = prop.description || '';
+        document.getElementById('form-prop-features').value = (prop.features || []).join(', ');
+
+        document.getElementById('propertyModalLabel').textContent = `Edit Property: ${prop.title}`;
+        propertyModal.show();
+      }
+
+      // Delete Property
+      function deleteProperty(id) {
+        if (!confirm('Are you sure you want to delete this listing?')) return;
+        properties = properties.filter(p => p.id !== id);
+        PropertiesEngine.saveToStorage(properties);
+        updateMetrics();
+        filterAdminList();
+        showAlert('Listing deleted successfully!');
+      }
+
+      // Save Property (Add / Edit)
+      document.getElementById('property-form').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const id = document.getElementById('form-prop-id').value;
+        const title = document.getElementById('form-prop-title').value.trim();
+        const price = parseFloat(document.getElementById('form-prop-price').value) || 0;
+        const type = document.getElementById('form-prop-type').value;
+        const status = document.getElementById('form-prop-status').value;
+        const featured = document.getElementById('form-prop-featured').checked;
+        const address = document.getElementById('form-prop-address').value.trim();
+        const city = document.getElementById('form-prop-city').value.trim();
+        const bedrooms = parseInt(document.getElementById('form-prop-beds').value, 10) || 1;
+        const bathrooms = parseFloat(document.getElementById('form-prop-baths').value) || 1;
+        const sqft = parseInt(document.getElementById('form-prop-sqft').value, 10) || 1000;
+        const yearBuilt = parseInt(document.getElementById('form-prop-year').value, 10) || 2024;
+        const mainImage = document.getElementById('form-prop-image').value.trim() || 'assets/img/real-estate/property-exterior-1.webp';
+        const description = document.getElementById('form-prop-desc').value.trim();
+        const features = document.getElementById('form-prop-features').value
+          .split(',')
+          .map(f => f.trim())
+          .filter(f => f.length > 0);
+
+        if (id) {
+          // Update existing
+          const idx = properties.findIndex(p => p.id === id);
+          if (idx !== -1) {
+            properties[idx] = {
+              ...properties[idx],
+              title, price, type, status, featured, address, city, bedrooms, bathrooms, sqft, yearBuilt, mainImage, description, features
+            };
+            showAlert('Listing updated successfully!');
+          }
+        } else {
+          // Create new
+          const newId = 'prop-' + (Date.now());
+          const newProp = {
+            id: newId,
+            title, price, type, status, featured, address, city, bedrooms, bathrooms, sqft, yearBuilt, mainImage,
+            gallery: [mainImage],
+            description, features,
+            agent: {
+              name: 'Sarah Johnson',
+              role: 'Senior Luxury Advisor',
+              avatar: 'assets/img/real-estate/agent-1.webp'
+            }
+          };
+          properties.unshift(newProp);
+          showAlert('New property listing created successfully!');
+        }
+
+        PropertiesEngine.saveToStorage(properties);
+        propertyModal.hide();
+        updateMetrics();
+        filterAdminList();
+      });
+
+      // Export JSON
+      document.getElementById('btn-export-json').addEventListener('click', () => {
+        const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(properties, null, 2));
+        const downloadAnchor = document.createElement('a');
+        downloadAnchor.setAttribute("href", dataStr);
+        downloadAnchor.setAttribute("download", "properties.json");
+        document.body.appendChild(downloadAnchor);
+        downloadAnchor.click();
+        downloadAnchor.remove();
+      });
+
+      // Reset DB
+      document.getElementById('btn-reset-db').addEventListener('click', async () => {
+        if (!confirm('Reset all listings to initial sample data?')) return;
+        properties = await PropertiesEngine.resetStorage();
+        updateMetrics();
+        filterAdminList();
+        showAlert('Database restored to default listings!');
+      });
+
+      // Initialize
+      updateMetrics();
+      filterAdminList();
+    });
+  </script>
+</body>
+</html>
