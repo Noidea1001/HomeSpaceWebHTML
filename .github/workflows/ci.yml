@@ -28,13 +28,31 @@ jobs:
         run: |
           npx --yes htmlhint "*.html"
 
-      - name: CSS Lint Check
+      - name: JavaScript Syntax Validation
         run: |
-          npx --yes stylelint "assets/css/**/*.css" --allow-empty-input || true
+          node -c assets/js/main.js
+          node -c assets/js/properties-engine.js
+          node -c assets/vendor/php-email-form/validate.js
+          echo "All JavaScript files validated successfully."
+
+      - name: JSON Database & Manifest Validation
+        run: |
+          node -e "JSON.parse(require('fs').readFileSync('data/properties.json', 'utf8'))"
+          node -e "JSON.parse(require('fs').readFileSync('manifest.json', 'utf8'))"
+          echo "All JSON files parsed and validated successfully."
 
       - name: Verify Core File Integrity
         run: |
           test -f index.html || exit 1
+          test -f properties.html || exit 1
+          test -f property-details.html || exit 1
+          test -f admin.html || exit 1
           test -f assets/css/main.css || exit 1
           test -f assets/js/main.js || exit 1
+          test -f assets/js/properties-engine.js || exit 1
           echo "All critical assets verified successfully."
+
+      - name: Verify Docker Container Build
+        run: |
+          docker build -t homespace:ci .
+          echo "Production Docker container build verified."

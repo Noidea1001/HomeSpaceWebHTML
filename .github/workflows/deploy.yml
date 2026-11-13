@@ -24,13 +24,19 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
+      - name: Prepare Clean Production Bundle
+        run: |
+          mkdir -p _dist
+          cp -r *.html sitemap.xml robots.txt manifest.json assets data _dist/
+          echo "Production distribution bundle assembled."
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
       - name: Upload Artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: "."
+          path: "_dist"
 
       - name: Deploy to GitHub Pages
         id: deployment
