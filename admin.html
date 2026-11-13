@@ -109,10 +109,13 @@
         <h1 class="sitename" style="font-size: 22px; margin: 0; font-weight: 800; color: #000000;">Home<span style="color: #2563eb;">Space</span> <span style="font-size: 13px; font-weight: 600; background: #000; color: #fff; padding: 2px 8px; border-radius: 6px; margin-left: 6px;">ADMIN</span></h1>
       </a>
 
-      <div class="d-flex align-items-center gap-3">
+      <div class="d-flex align-items-center gap-2">
         <a href="properties.html" class="btn btn-sm btn-outline-dark" style="border-radius: 8px; font-weight: 600;" target="_blank">
           <i class="bi bi-eye"></i> View Live Site
         </a>
+        <button class="btn btn-sm btn-outline-dark" id="btn-view-inquiries" style="border-radius: 8px; font-weight: 600;">
+          <i class="bi bi-envelope"></i> Inquiries <span class="badge bg-primary ms-1" id="inquiries-badge">0</span>
+        </button>
         <button class="btn btn-sm btn-blue" id="btn-open-add-modal">
           <i class="bi bi-plus-lg"></i> Add New Property
         </button>
@@ -326,6 +329,27 @@
     </div>
   </div>
 
+  <!-- Client Inquiries Modal -->
+  <div class="modal fade" id="inquiriesModal" tabindex="-1" aria-labelledby="inquiriesModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content" style="border-radius: 16px; border: 1px solid #e4e4e7; overflow: hidden;">
+        <div class="modal-header" style="background: #000; color: #fff;">
+          <h5 class="modal-title font-weight-bold" id="inquiriesModalLabel"><i class="bi bi-inbox me-2"></i> Client Inquiries & Messages</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-4">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <span class="text-muted small">Inquiries received from contact and property request forms</span>
+            <button class="btn btn-sm btn-outline-danger" id="btn-clear-inquiries"><i class="bi bi-trash"></i> Clear All</button>
+          </div>
+          <div id="inquiries-list-container" style="max-height: 480px; overflow-y: auto;">
+            <!-- Dynamically populated -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Vendor JS Files -->
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/js/properties-engine.js"></script>
@@ -367,33 +391,33 @@
         tbody.innerHTML = list.map(item => `
           <tr>
             <td>
-              <img src="${item.mainImage || 'assets/img/real-estate/property-exterior-1.webp'}" alt="${item.title}" class="prop-thumb">
+              <img src="${PropertiesEngine.escapeHTML(item.mainImage || 'assets/img/real-estate/property-exterior-1.webp')}" alt="${PropertiesEngine.escapeHTML(item.title)}" class="prop-thumb">
             </td>
             <td>
-              <div class="fw-bold" style="color: #000;">${item.title}</div>
-              <div class="text-muted small"><i class="bi bi-geo-alt"></i> ${item.address || ''}</div>
+              <div class="fw-bold" style="color: #000;">${PropertiesEngine.escapeHTML(item.title)}</div>
+              <div class="text-muted small"><i class="bi bi-geo-alt"></i> ${PropertiesEngine.escapeHTML(item.address || '')}</div>
             </td>
             <td>
-              <span class="badge bg-light text-dark border text-uppercase" style="font-size: 11px;">${item.type}</span>
+              <span class="badge bg-light text-dark border text-uppercase" style="font-size: 11px;">${PropertiesEngine.escapeHTML(item.type)}</span>
             </td>
             <td class="fw-bold">
               ${PropertiesEngine.formatPrice(item.price, item.status)}
             </td>
             <td class="small text-muted">
-              ${item.bedrooms}b / ${item.bathrooms}ba • ${item.sqft ? item.sqft.toLocaleString() + ' sqft' : ''}
+              ${item.bedrooms}b / ${item.bathrooms}ba • ${item.sqft ? Number(item.sqft).toLocaleString() + ' sqft' : ''}
             </td>
             <td>
               ${item.status === 'for-sale' ? '<span class="badge-pill-custom" style="background:#2563eb;color:#fff;">Sale</span>' : '<span class="badge-pill-custom" style="background:#000;color:#fff;">Rent</span>'}
               ${item.featured ? '<span class="badge-pill-custom ms-1" style="background:#09090b;color:#fff;">Featured</span>' : ''}
             </td>
             <td class="text-end">
-              <a href="property-details.html?id=${item.id}" target="_blank" class="btn btn-sm btn-outline-secondary me-1" title="View Details">
+              <a href="property-details.html?id=${encodeURIComponent(item.id)}" target="_blank" class="btn btn-sm btn-outline-secondary me-1" title="View Details">
                 <i class="bi bi-box-arrow-up-right"></i>
               </a>
-              <button class="btn btn-sm btn-outline-primary btn-edit-prop me-1" data-id="${item.id}" title="Edit Property">
+              <button class="btn btn-sm btn-outline-primary btn-edit-prop me-1" data-id="${PropertiesEngine.escapeHTML(item.id)}" title="Edit Property">
                 <i class="bi bi-pencil"></i>
               </button>
-              <button class="btn btn-sm btn-outline-danger btn-delete-prop" data-id="${item.id}" title="Delete Property">
+              <button class="btn btn-sm btn-outline-danger btn-delete-prop" data-id="${PropertiesEngine.escapeHTML(item.id)}" title="Delete Property">
                 <i class="bi bi-trash"></i>
               </button>
             </td>
@@ -550,9 +574,73 @@
         showAlert('Database restored to default listings!');
       });
 
+      // Inquiries management
+      const inqModalEl = document.getElementById('inquiriesModal');
+      const inqModal = inqModalEl ? new bootstrap.Modal(inqModalEl) : null;
+
+      function getInquiries() {
+        try {
+          return JSON.parse(localStorage.getItem('homespace_inquiries') || '[]');
+        } catch {
+          return [];
+        }
+      }
+
+      function updateInquiriesBadge() {
+        const inqs = getInquiries();
+        const badge = document.getElementById('inquiries-badge');
+        if (badge) badge.textContent = inqs.length;
+      }
+
+      function renderInquiries() {
+        const list = getInquiries();
+        const container = document.getElementById('inquiries-list-container');
+        if (!container) return;
+
+        if (list.length === 0) {
+          container.innerHTML = `<div class="text-center py-4 text-muted"><i class="bi bi-inbox fs-1 d-block mb-2 text-secondary"></i>No client inquiries received yet. When visitors submit contact or property inquiry forms, they will show up here.</div>`;
+          return;
+        }
+
+        container.innerHTML = list.map(item => `
+          <div class="border rounded p-3 mb-2 bg-light">
+            <div class="d-flex justify-content-between align-items-start mb-1">
+              <div>
+                <strong>${PropertiesEngine.escapeHTML(item.name || 'Anonymous')}</strong>
+                <span class="text-muted small ms-2"><i class="bi bi-envelope"></i> ${PropertiesEngine.escapeHTML(item.email || 'N/A')}</span>
+                ${item.phone ? `<span class="text-muted small ms-2"><i class="bi bi-telephone"></i> ${PropertiesEngine.escapeHTML(item.phone)}</span>` : ''}
+              </div>
+              <span class="badge bg-secondary">${new Date(item.date).toLocaleDateString()}</span>
+            </div>
+            <div class="fw-bold small text-primary mb-1">${PropertiesEngine.escapeHTML(item.subject || 'Property Inquiry')}</div>
+            <p class="mb-0 small text-dark">${PropertiesEngine.escapeHTML(item.message || '')}</p>
+          </div>
+        `).join('');
+      }
+
+      const viewInqBtn = document.getElementById('btn-view-inquiries');
+      if (viewInqBtn && inqModal) {
+        viewInqBtn.addEventListener('click', () => {
+          renderInquiries();
+          inqModal.show();
+        });
+      }
+
+      const clearInqBtn = document.getElementById('btn-clear-inquiries');
+      if (clearInqBtn) {
+        clearInqBtn.addEventListener('click', () => {
+          if (!confirm('Clear all inquiries history?')) return;
+          localStorage.removeItem('homespace_inquiries');
+          updateInquiriesBadge();
+          renderInquiries();
+          showAlert('Inquiries cleared.');
+        });
+      }
+
       // Initialize
       updateMetrics();
       filterAdminList();
+      updateInquiriesBadge();
     });
   </script>
 </body>
