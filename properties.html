@@ -4,9 +4,11 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Properties - HomeSpace Bootstrap Template</title>
-  <meta name="description" content="">
-  <meta name="keywords" content="">
+  <title>Properties & Real Estate Catalog - HomeSpace</title>
+  <meta name="description" content="Browse verified houses, villas, luxury apartments, and condos with live pricing, filter tools, and high-resolution photo galleries on HomeSpace.">
+  <meta name="keywords" content="properties, luxury homes, villas, apartments, condos, real estate listings, HomeSpace">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#2563eb">
 
   <!-- Favicons -->
   <link href="assets/img/favicon.png" rel="icon">
@@ -125,22 +127,23 @@
                   <div class="col-lg-2 col-md-6">
                     <div class="search-field">
                       <label>Type</label>
-                      <select class="form-select">
-                        <option>Any Type</option>
-                        <option>House</option>
-                        <option>Apartment</option>
-                        <option>Condo</option>
+                      <select class="form-select" id="filter-type">
+                        <option value="">Any Type</option>
+                        <option value="house">House</option>
+                        <option value="apartment">Apartment</option>
+                        <option value="condo">Condo</option>
+                        <option value="villa">Villa</option>
                       </select>
                     </div>
                   </div>
                   <div class="col-lg-2 col-md-6">
                     <div class="search-field">
                       <label>Price</label>
-                      <select class="form-select">
-                        <option>Any Price</option>
-                        <option>$0 - $500k</option>
-                        <option>$500k - $1M</option>
-                        <option>$1M+</option>
+                      <select class="form-select" id="filter-price">
+                        <option value="">Any Price</option>
+                        <option value="0-500000">$0 - $500k</option>
+                        <option value="500000-1000000">$500k - $1M</option>
+                        <option value="1000000+">$1M+</option>
                       </select>
                     </div>
                   </div>
@@ -617,198 +620,9 @@
             </div>
           </div>
 
-          <div class="properties-rows view-rows">
+          <div class="properties-rows view-rows" style="display: none;">
             <div class="row g-4">
-
-              <div class="col-12">
-                <div class="property-row-item">
-                  <a href="property-details.html" class="property-row-link">
-                    <div class="row align-items-center">
-                      <div class="col-lg-4">
-                        <div class="property-image-wrapper">
-                          <img src="assets/img/real-estate/property-exterior-2.webp" alt="Luxury Villa" class="img-fluid">
-                          <div class="property-status">
-                            <span class="status-badge featured">Featured</span>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-lg-8">
-                        <div class="property-row-content">
-                          <div class="row align-items-center">
-                            <div class="col-lg-8">
-                              <div class="property-info">
-                                <div class="property-header">
-                                  <h4 class="property-title">Luxury Modern Villa with Pool</h4>
-                                  <div class="property-type-price">
-                                    <span class="property-type">House</span>
-                                    <span class="property-price">$1,850,000</span>
-                                  </div>
-                                </div>
-                                <p class="property-address">
-                                  <i class="bi bi-geo-alt"></i>
-                                  3458 Sunset Boulevard, Beverly Hills, CA 90210
-                                </p>
-                                <div class="property-specs">
-                                  <span><i class="bi bi-house-door"></i> 5 Bed</span>
-                                  <span><i class="bi bi-droplet"></i> 4 Bath</span>
-                                  <span><i class="bi bi-arrows-angle-expand"></i> 3,400 sq ft</span>
-                                </div>
-                                <div class="property-agent">
-                                  <img src="assets/img/real-estate/agent-2.webp" alt="Agent" class="agent-avatar">
-                                  <span>Jennifer Miller, Prime Realty Group</span>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="col-lg-4">
-                              <div class="property-actions">
-                                <div class="action-buttons">
-                                  <button class="action-btn favorite-btn">
-                                    <i class="bi bi-heart"></i> Save
-                                  </button>
-                                  <button class="action-btn contact-btn">
-                                    <i class="bi bi-telephone"></i> Call
-                                  </button>
-                                  <button class="action-btn gallery-btn">
-                                    <i class="bi bi-images"></i> 14 Photos
-                                  </button>
-                                </div>
-                                <span class="btn btn-primary view-details-btn">View Details</span>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </a>
-                </div>
-              </div><!-- End Property Row Item -->
-
-              <div class="col-12">
-                <div class="property-row-item">
-                  <a href="property-details.html" class="property-row-link">
-                    <div class="row align-items-center">
-                      <div class="col-lg-4">
-                        <div class="property-image-wrapper">
-                          <img src="assets/img/real-estate/property-interior-1.webp" alt="Modern Apartment" class="img-fluid">
-                          <div class="property-status">
-                            <span class="status-badge new">New</span>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-lg-8">
-                        <div class="property-row-content">
-                          <div class="row align-items-center">
-                            <div class="col-lg-8">
-                              <div class="property-info">
-                                <div class="property-header">
-                                  <h4 class="property-title">Downtown Modern Penthouse</h4>
-                                  <div class="property-type-price">
-                                    <span class="property-type">Apartment</span>
-                                    <span class="property-price">$5,200<small>/month</small></span>
-                                  </div>
-                                </div>
-                                <p class="property-address">
-                                  <i class="bi bi-geo-alt"></i>
-                                  1247 Broadway Street, Manhattan, NY 10001
-                                </p>
-                                <div class="property-specs">
-                                  <span><i class="bi bi-house-door"></i> 3 Bed</span>
-                                  <span><i class="bi bi-droplet"></i> 2 Bath</span>
-                                  <span><i class="bi bi-arrows-angle-expand"></i> 2,100 sq ft</span>
-                                </div>
-                                <div class="property-agent">
-                                  <img src="assets/img/real-estate/agent-4.webp" alt="Agent" class="agent-avatar">
-                                  <span>Robert Thompson, Urban Living Realty</span>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="col-lg-4">
-                              <div class="property-actions">
-                                <div class="action-buttons">
-                                  <button class="action-btn favorite-btn">
-                                    <i class="bi bi-heart"></i> Save
-                                  </button>
-                                  <button class="action-btn contact-btn">
-                                    <i class="bi bi-telephone"></i> Call
-                                  </button>
-                                  <button class="action-btn gallery-btn">
-                                    <i class="bi bi-images"></i> 9 Photos
-                                  </button>
-                                </div>
-                                <span class="btn btn-primary view-details-btn">View Details</span>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </a>
-                </div>
-              </div><!-- End Property Row Item -->
-
-              <div class="col-12">
-                <div class="property-row-item">
-                  <a href="property-details.html" class="property-row-link">
-                    <div class="row align-items-center">
-                      <div class="col-lg-4">
-                        <div class="property-image-wrapper">
-                          <img src="assets/img/real-estate/property-exterior-5.webp" alt="Family Home" class="img-fluid">
-                          <div class="property-status">
-                            <span class="status-badge sale">For Sale</span>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-lg-8">
-                        <div class="property-row-content">
-                          <div class="row align-items-center">
-                            <div class="col-lg-8">
-                              <div class="property-info">
-                                <div class="property-header">
-                                  <h4 class="property-title">Charming Family Home with Garden</h4>
-                                  <div class="property-type-price">
-                                    <span class="property-type">House</span>
-                                    <span class="property-price">$975,000</span>
-                                  </div>
-                                </div>
-                                <p class="property-address">
-                                  <i class="bi bi-geo-alt"></i>
-                                  892 Maple Grove Avenue, Austin, TX 73301
-                                </p>
-                                <div class="property-specs">
-                                  <span><i class="bi bi-house-door"></i> 4 Bed</span>
-                                  <span><i class="bi bi-droplet"></i> 3 Bath</span>
-                                  <span><i class="bi bi-arrows-angle-expand"></i> 2,650 sq ft</span>
-                                </div>
-                                <div class="property-agent">
-                                  <img src="assets/img/real-estate/agent-6.webp" alt="Agent" class="agent-avatar">
-                                  <span>Lisa Anderson, Texas Home Solutions</span>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="col-lg-4">
-                              <div class="property-actions">
-                                <div class="action-buttons">
-                                  <button class="action-btn favorite-btn">
-                                    <i class="bi bi-heart"></i> Save
-                                  </button>
-                                  <button class="action-btn contact-btn">
-                                    <i class="bi bi-telephone"></i> Call
-                                  </button>
-                                  <button class="action-btn gallery-btn">
-                                    <i class="bi bi-images"></i> 11 Photos
-                                  </button>
-                                </div>
-                                <span class="btn btn-primary view-details-btn">View Details</span>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </a>
-                </div>
-              </div><!-- End Property Row Item -->
-
+              <!-- Dynamically populated by PropertiesEngine -->
             </div>
           </div>
 
