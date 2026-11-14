@@ -46,6 +46,7 @@ jobs:
           test -f index.html || exit 1
           test -f properties.html || exit 1
           test -f property-details.html || exit 1
+          test -f calculator.html || exit 1
           test -f admin.html || exit 1
           test -f assets/css/main.css || exit 1
           test -f assets/js/main.js || exit 1
