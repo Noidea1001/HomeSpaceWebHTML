@@ -114,6 +114,7 @@ const PropertiesEngine = (() => {
       ? '<span class="status-badge featured" style="background:#000000;color:#fff;padding:4px 10px;border-radius:6px;font-size:12px;font-weight:700;">Featured</span>'
       : '';
     const isFav = isFavorited(prop.id);
+    const isComp = typeof CompareEngine !== 'undefined' && CompareEngine.isCompared(prop.id);
 
     return `
       <div class="col-lg-4 col-md-6 property-card-item" data-id="${escapeHTML(prop.id)}" data-type="${escapeHTML(prop.type)}" data-city="${escapeHTML((prop.city || '').toLowerCase())}" data-beds="${prop.bedrooms}" data-price="${prop.price}">
@@ -127,6 +128,9 @@ const PropertiesEngine = (() => {
               ${statusBadge}
             </div>
             <div class="property-actions" style="position: absolute; top: 15px; right: 15px; display: flex; gap: 8px; z-index: 3;">
+              <button class="action-btn compare-btn ${isComp ? 'active' : ''}" type="button" data-id="${escapeHTML(prop.id)}" aria-label="Compare" title="${isComp ? 'Remove from compare' : 'Compare property'}" style="background: rgba(255,255,255,0.92); border: none; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,0.15); cursor: pointer; transition: transform 0.2s;">
+                <i class="bi ${isComp ? 'bi-check-square-fill text-primary' : 'bi-bar-chart-steps'}"></i>
+              </button>
               <button class="action-btn favorite-btn ${isFav ? 'active' : ''}" type="button" data-id="${escapeHTML(prop.id)}" aria-label="Favorite" title="${isFav ? 'Remove from favorites' : 'Save to favorites'}" style="background: rgba(255,255,255,0.92); border: none; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,0.15); cursor: pointer; transition: transform 0.2s;">
                 <i class="bi ${isFav ? 'bi-heart-fill text-danger' : 'bi-heart'}"></i>
               </button>
@@ -222,6 +226,7 @@ const PropertiesEngine = (() => {
                   <span class="small font-weight-bold" style="color: #09090b;">${escapeHTML(prop.agent ? prop.agent.name : 'HomeSpace Advisor')}</span>
                 </div>
                 <div class="d-flex gap-2">
+                  <button class="btn btn-sm btn-outline-primary compare-btn ${isComp ? 'active' : ''}" data-id="${escapeHTML(prop.id)}" title="${isComp ? 'Remove from compare' : 'Compare'}"><i class="bi ${isComp ? 'bi-check-square-fill' : 'bi-bar-chart-steps'}"></i> Compare</button>
                   <button class="btn btn-sm btn-outline-dark favorite-btn ${isFav ? 'active' : ''}" data-id="${escapeHTML(prop.id)}" title="Save"><i class="bi ${isFav ? 'bi-heart-fill text-danger' : 'bi-heart'}"></i></button>
                   <a href="property-details.html?id=${encodeURIComponent(prop.id)}" class="btn btn-sm btn-primary" style="background:#2563eb; border:none; padding: 6px 16px; border-radius: 8px; font-weight: 600;">View Details</a>
                 </div>
