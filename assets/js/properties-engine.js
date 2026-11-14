@@ -400,9 +400,14 @@ const PropertiesEngine = (() => {
           pageInfo.innerHTML = `Showing <strong>1-${filtered.length}</strong> of <strong>${filtered.length}</strong> properties`;
         }
       }
+
+      // Update interactive map if active or available
+      if (window.HomeSpaceMap) {
+        window.HomeSpaceMap.updateMarkers(filtered);
+      }
     }
 
-    // View Toggle (Masonry vs Rows)
+    // View Toggle (Masonry vs Rows vs Map)
     if (viewButtons.length > 0) {
       viewButtons.forEach(btn => {
         btn.addEventListener('click', (e) => {
@@ -413,13 +418,26 @@ const PropertiesEngine = (() => {
 
           const masonryEl = document.querySelector('.properties-masonry');
           const rowsEl = document.querySelector('.properties-rows');
+          const mapEl = document.querySelector('.properties-map-view');
 
           if (currentView === 'rows') {
             if (masonryEl) masonryEl.style.display = 'none';
             if (rowsEl) rowsEl.style.display = 'block';
+            if (mapEl) mapEl.style.display = 'none';
+          } else if (currentView === 'map') {
+            if (masonryEl) masonryEl.style.display = 'none';
+            if (rowsEl) rowsEl.style.display = 'none';
+            if (mapEl) {
+              mapEl.style.display = 'block';
+              if (window.HomeSpaceMap) {
+                window.HomeSpaceMap.initPropertiesMap('properties-map', properties);
+                window.HomeSpaceMap.invalidateSize();
+              }
+            }
           } else {
             if (masonryEl) masonryEl.style.display = 'block';
             if (rowsEl) rowsEl.style.display = 'none';
+            if (mapEl) mapEl.style.display = 'none';
           }
         });
       });
@@ -647,6 +665,11 @@ const PropertiesEngine = (() => {
     if (shareBtn) {
       shareBtn.classList.add('share-btn');
       shareBtn.setAttribute('data-id', prop.id);
+    }
+
+    // 11. Update Interactive Neighborhood Map
+    if (window.HomeSpaceMap && document.getElementById('property-detail-map')) {
+      window.HomeSpaceMap.initDetailMap('property-detail-map', prop);
     }
   }
 

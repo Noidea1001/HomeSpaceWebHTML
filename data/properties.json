@@ -8,6 +8,10 @@
     "featured": true,
     "address": "3458 Sunset Boulevard, Beverly Hills, CA 90210",
     "city": "Beverly Hills",
+    "coordinates": {
+      "lat": 34.0837,
+      "lng": -118.4004
+    },
     "bedrooms": 5,
     "bathrooms": 4,
     "sqft": 3400,
@@ -38,6 +42,10 @@
     "featured": true,
     "address": "782 Grand Avenue, Penthouse B, Downtown, CA 90015",
     "city": "Downtown",
+    "coordinates": {
+      "lat": 34.0450,
+      "lng": -118.2580
+    },
     "bedrooms": 3,
     "bathrooms": 3,
     "sqft": 2100,
@@ -68,6 +76,10 @@
     "featured": false,
     "address": "1204 Ocean Way, Marina District, CA 90401",
     "city": "Marina District",
+    "coordinates": {
+      "lat": 34.0150,
+      "lng": -118.4980
+    },
     "bedrooms": 2,
     "bathrooms": 2,
     "sqft": 1450,
@@ -97,6 +109,10 @@
     "featured": true,
     "address": "520 Highland Crest, Pasadena, CA 91101",
     "city": "Pasadena",
+    "coordinates": {
+      "lat": 34.1478,
+      "lng": -118.1445
+    },
     "bedrooms": 6,
     "bathrooms": 5,
     "sqft": 4800,
@@ -126,6 +142,10 @@
     "featured": false,
     "address": "409 Studio Lane, Apt 304, Arts District, CA 90013",
     "city": "Arts District",
+    "coordinates": {
+      "lat": 34.0407,
+      "lng": -118.2330
+    },
     "bedrooms": 1,
     "bathrooms": 1.5,
     "sqft": 1100,
@@ -154,6 +174,10 @@
     "featured": true,
     "address": "890 Bel Air Crest, Bel Air, CA 90077",
     "city": "Bel Air",
+    "coordinates": {
+      "lat": 34.0880,
+      "lng": -118.4500
+    },
     "bedrooms": 5,
     "bathrooms": 6,
     "sqft": 5200,
@@ -183,6 +207,10 @@
     "featured": false,
     "address": "218 Pacific Heights Road, Santa Monica, CA 90403",
     "city": "Santa Monica",
+    "coordinates": {
+      "lat": 34.0280,
+      "lng": -118.4850
+    },
     "bedrooms": 3,
     "bathrooms": 2.5,
     "sqft": 1850,
@@ -211,6 +239,10 @@
     "featured": false,
     "address": "100 Wilshire Blvd, Unit 1802, Santa Monica, CA 90401",
     "city": "Santa Monica",
+    "coordinates": {
+      "lat": 34.0170,
+      "lng": -118.5010
+    },
     "bedrooms": 2,
     "bathrooms": 2,
     "sqft": 1300,

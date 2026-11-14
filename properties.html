@@ -24,6 +24,7 @@
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
   <link href="assets/vendor/aos/aos.css" rel="stylesheet">
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
@@ -193,11 +194,14 @@
                     </select>
                   </div>
                   <div class="view-toggle">
-                    <button class="view-btn active" data-view="masonry">
+                    <button class="view-btn active" data-view="masonry" title="Grid View">
                       <i class="bi bi-grid"></i>
                     </button>
-                    <button class="view-btn" data-view="rows">
+                    <button class="view-btn" data-view="rows" title="List View">
                       <i class="bi bi-view-stacked"></i>
+                    </button>
+                    <button class="view-btn" data-view="map" title="Interactive Map View">
+                      <i class="bi bi-map"></i>
                     </button>
                   </div>
                 </div>
@@ -207,6 +211,11 @@
         </div>
 
         <div class="properties-container">
+
+          <!-- Interactive Leaflet Map View -->
+          <div class="properties-map-view view-map" style="display: none;" data-aos="fade-up" data-aos-delay="200">
+            <div id="properties-map" style="height: 600px; width: 100%; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.06); border: 1px solid #e4e4e7;"></div>
+          </div>
 
           <div class="properties-masonry view-masonry active" data-aos="fade-up" data-aos-delay="250">
             <div class="row g-4">
@@ -743,6 +752,9 @@
 
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
+  <!-- Interactive Leaflet Map Engine -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="assets/js/map-engine.js"></script>
   <!-- Dynamic Real Estate Engine & Comparison -->
   <script src="assets/js/compare-engine.js"></script>
   <script src="assets/js/properties-engine.js"></script>

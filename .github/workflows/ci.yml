@@ -33,6 +33,7 @@ jobs:
           node -c assets/js/main.js
           node -c assets/js/properties-engine.js
           node -c assets/js/compare-engine.js
+          node -c assets/js/map-engine.js
           node -c assets/vendor/php-email-form/validate.js
           echo "All JavaScript files validated successfully."
 
@@ -53,6 +54,7 @@ jobs:
           test -f assets/js/main.js || exit 1
           test -f assets/js/properties-engine.js || exit 1
           test -f assets/js/compare-engine.js || exit 1
+          test -f assets/js/map-engine.js || exit 1
           echo "All critical assets verified successfully."
 
       - name: Verify Docker Container Build
