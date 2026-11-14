@@ -70,6 +70,17 @@
       } catch (e) {
         console.warn('Could not store inquiry locally', e);
       }
+
+      // Sync to Supabase Cloud if configured
+      if (window.HomeSpaceCloud && window.HomeSpaceCloud.isConfigured()) {
+        window.HomeSpaceCloud.submitInquiry({
+          name: inquiry.name,
+          email: inquiry.email,
+          phone: inquiry.phone,
+          subject: inquiry.subject,
+          message: inquiry.message
+        }).catch(err => console.warn('Supabase inquiry sync error', err));
+      }
     }
 
     fetch(action, {

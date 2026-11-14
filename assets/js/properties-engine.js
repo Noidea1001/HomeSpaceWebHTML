@@ -63,9 +63,22 @@ const PropertiesEngine = (() => {
     return favs.includes(id);
   }
 
-  // 1. Fetch properties from LocalStorage if admin-modified, otherwise fetch fresh JSON
+  // 1. Fetch properties from Supabase Cloud (if configured), LocalStorage, or fresh JSON
   async function loadData() {
     try {
+      // Check Cloud Backend (Supabase)
+      if (window.HomeSpaceCloud && window.HomeSpaceCloud.isConfigured()) {
+        try {
+          const cloudData = await window.HomeSpaceCloud.fetchProperties();
+          if (cloudData && Array.isArray(cloudData) && cloudData.length > 0) {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(cloudData));
+            return cloudData;
+          }
+        } catch (cloudErr) {
+          console.warn('PropertiesEngine: Cloud fetch failed, falling back to local storage', cloudErr);
+        }
+      }
+
       const hasLocalOverrides = localStorage.getItem(MODIFIED_FLAG_KEY) === 'true';
       const cached = localStorage.getItem(STORAGE_KEY);
       if (hasLocalOverrides && cached) {
