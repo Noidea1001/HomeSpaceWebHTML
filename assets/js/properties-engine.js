@@ -134,7 +134,7 @@ const PropertiesEngine = (() => {
         <div class="property-item" style="border: 1px solid #e4e4e7; border-radius: 16px; overflow: hidden; background: #fff; height: 100%; display: flex; flex-direction: column; position: relative;">
           <div class="property-image-wrapper" style="position: relative; overflow: hidden; height: 260px;">
             <a href="property-details.html?id=${encodeURIComponent(prop.id)}" class="property-link" style="display: block; width: 100%; height: 100%;">
-              <img src="${escapeHTML(prop.mainImage)}" alt="${escapeHTML(prop.title)}" class="img-fluid" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy">
+              <img src="${escapeHTML(prop.mainImage)}" alt="${escapeHTML(prop.title)}" class="img-fluid" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy" decoding="async">
             </a>
             <div class="property-status" style="position: absolute; top: 15px; left: 15px; display: flex; gap: 6px; z-index: 2; pointer-events: none;">
               ${featuredBadge}
@@ -207,7 +207,7 @@ const PropertiesEngine = (() => {
             <div class="col-lg-4 col-md-5">
               <div style="position: relative; height: 210px; border-radius: 12px; overflow: hidden;">
                 <a href="property-details.html?id=${encodeURIComponent(prop.id)}">
-                  <img src="${escapeHTML(prop.mainImage)}" alt="${escapeHTML(prop.title)}" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy">
+                  <img src="${escapeHTML(prop.mainImage)}" alt="${escapeHTML(prop.title)}" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy" decoding="async">
                 </a>
                 <div style="position: absolute; top: 12px; left: 12px; pointer-events: none;">
                   ${statusBadge}
@@ -235,7 +235,7 @@ const PropertiesEngine = (() => {
               </div>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="d-flex align-items-center gap-2">
-                  <img src="${escapeHTML(prop.agent ? prop.agent.avatar : 'assets/img/real-estate/agent-1.webp')}" style="width: 32px; height: 32px; border-radius: 50%; object-fit: cover;" loading="lazy">
+                  <img src="${escapeHTML(prop.agent ? prop.agent.avatar : 'assets/img/real-estate/agent-1.webp')}" style="width: 32px; height: 32px; border-radius: 50%; object-fit: cover;" loading="lazy" decoding="async">
                   <span class="small font-weight-bold" style="color: #09090b;">${escapeHTML(prop.agent ? prop.agent.name : 'HomeSpace Advisor')}</span>
                 </div>
                 <div class="d-flex gap-2">

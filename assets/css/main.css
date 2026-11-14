@@ -9641,4 +9641,89 @@ body.dark-theme .theme-toggle-btn i {
   color: #fbbf24 !important;
 }
 
+/*--------------------------------------------------------------
+# Print Stylesheet - Luxury Property Brochure
+--------------------------------------------------------------*/
+@media print {
+  #header,
+  .footer,
+  #scroll-top,
+  #preloader,
+  .theme-toggle-btn,
+  .compare-floating-bar,
+  .actions-card,
+  .contact-form,
+  .similar-properties,
+  .location-section iframe,
+  .location-section #property-detail-map,
+  .search-bar,
+  .view-toggle,
+  .pagination-wrapper,
+  .btn,
+  nav,
+  aside {
+    display: none !important;
+  }
+
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+    font-size: 11pt !important;
+    line-height: 1.5 !important;
+    margin: 0 !important;
+    padding: 8mm !important;
+  }
+
+  .container, .container-fluid {
+    max-width: 100% !important;
+    width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .property-title-section h1 {
+    font-size: 20pt !important;
+    color: #000000 !important;
+    margin-bottom: 4pt !important;
+  }
+
+  .property-meta .price {
+    font-size: 18pt !important;
+    color: #2563eb !important;
+    font-weight: 800 !important;
+  }
+
+  .stat-grid {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 8pt !important;
+    margin: 12pt 0 !important;
+  }
+
+  .stat-card {
+    border: 1pt solid #d4d4d8 !important;
+    padding: 8pt !important;
+    background: #fafafa !important;
+    break-inside: avoid;
+  }
+
+  .hero-image, .thumbnail-img, img {
+    max-width: 100% !important;
+    page-break-inside: avoid !important;
+  }
+
+  .agent-card {
+    border: 1pt solid #d4d4d8 !important;
+    padding: 12pt !important;
+    background: #f8fafc !important;
+    page-break-inside: avoid !important;
+    margin-top: 14pt !important;
+  }
+
+  a[href]::after {
+    content: "" !important;
+  }
+}
+
+
 
